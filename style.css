@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "Toledo2";
+  src: url(images/Toledo-Medium\ Regular.ttf);
+}
+
+@font-face {
+  font-family: "EkMukta";
+  src: url(images/EkMukta-ExtraBold.ttf);
+}
+
 .indexBody {
   background-image: url(images/albumbg.png);
   background-size: cover;
@@ -6,7 +16,7 @@
 }
 
 .indexMain h1 {
-  font-size: 4rem;
+  font: 100px Toledo2;
   margin-top: .01rem;
   padding: 0;
   text-align: center;
@@ -17,20 +27,51 @@
   display: block;
   margin: auto;
   width: 25% !important;
+  box-shadow: 0 0 20px 15px #EE6C84;
+}
+
+#indexAlbum img:hover {
+  border: 2px solid white;
 }
 
 #indexAlbum {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
-  padding: 2rem 0;
 }
 
-#indexTOUR img {
-  width: 25% !important;
-  display: block;
-  margin: auto;
+#albumName {
+  justify-content: space-between;
+  display: flex;
+  width: 500px;
+  font: 20px EkMukta;
+  color: #EE6C84;
+}
+
+#albumName h2 {
+  padding-top: 15px;
+  margin: 0;
+}
+
+#listenButton {
+  padding: .5em;
+  border: 1px solid #EE6C84;
+  background-color:#EE6C84;
+}
+
+#listenButton:hover {
+  border: 2px solid white;
+}
+
+#listenButton a {
+  font: bold 15px Arial Black;
+  text-decoration: none;
+  color: white
+}
+
+#listenButton a:hover {
+  font: italic bold 15px Arial Black;
+  text-decoration: underline;
 }
 
 #indexTOUR {
@@ -38,7 +79,53 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  padding: 2rem 0;
+  padding: 3rem 0;
+}
+
+#ticketButton {
+  padding: .5em;
+  background-image: url(images/auhtourbg.png);
+  background-size: cover;
+  background-repeat: repeat;
+  
+}
+
+#ticketButton:hover {
+  border: 2px solid #AFF988;
+  padding: .5em;
+  background-image: url(images/auhtourbg.png);
+  background-size: cover;
+  background-repeat: repeat;
+}
+
+#ticketButton a {
+  font: bold 15px Arial Black;
+  text-decoration: none;
+  color: #AFF988;
+}
+
+#ticketButton a:hover {
+  text-decoration: underline;
+  font: italic bold 15px Arial Black;
+}
+
+#poster img {
+  width:750px;
+  box-shadow: 0 0 20px 15px #37E4AF;
+}
+
+#poster img:hover {
+  border: 3px solid #AFF988;
+  width:750px;
+  box-shadow: 0 0 20px 15px #37E4AF;
+}
+
+.indexVideo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 20px;
 }
 
 #menuToggle {
@@ -56,12 +143,12 @@
 
 #menuToggle a {
   text-decoration: none;
-  color:#EE6C84;
+  color:white;
   transition: color 0.3s ease;
 }
 
 #menuToggle a:hover {
-  color: white
+  color:#3C3F48;
 }
 
 #menuToggle input {
@@ -112,7 +199,7 @@
 {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
-  background: #232323;
+  background: white;
 }
 
 #menuToggle input:checked ~ span:nth-last-child(3)
@@ -129,17 +216,18 @@
 #menu
 {
   position: absolute;
-  max-width: 400px;
+  max-width: 300px;
   width: 100vw;
-  max-height: 100vh;
+  height: 1000px;
   margin: -100px 0 0 -50px;
   padding: 50px;
   padding-top: 125px;
   box-sizing: border-box;
   overflow-y: auto;
-  background: #ededed;
+  background:#EE6C84;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
+  border:3px solid #232323;
   
   transform-origin: 0% 0%;
   transform: translate(-100%, 0);
@@ -149,8 +237,9 @@
 
 #menu li
 {
-  padding: 10px 0;
-  font-size: 22px;
+  font: bold 22px Arial Black;
+  text-align: center;
+  padding: 30px 0;
 }
 
 #menu li label
