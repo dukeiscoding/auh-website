@@ -27,7 +27,16 @@
   display: block;
   margin: auto;
   width: 25% !important;
-  box-shadow: 0 0 20px 15px #EE6C84;
+  animation: mymove 4s infinite;
+}
+
+@keyframes mymove {
+    0%, 100% {
+    box-shadow: 0 0 15px 10px #EE6C84;
+  }
+  50% {
+    box-shadow: 0 0 30px 20px #EE6C84;
+  }
 }
 
 #indexAlbum img:hover {
@@ -111,13 +120,22 @@
 
 #poster img {
   width:750px;
+  animation: mymove2 5s infinite; 
   box-shadow: 0 0 20px 15px #37E4AF;
 }
 
 #poster img:hover {
   border: 3px solid #AFF988;
   width:750px;
-  box-shadow: 0 0 20px 15px #37E4AF;
+}
+
+@keyframes mymove2 {
+    0%, 100% {
+    box-shadow: 0 0 15px 10px #37E4AF;
+  }
+  50% {
+    box-shadow: 0 0 30px 20px #37E4AF;
+  }
 }
 
 .indexVideo {
