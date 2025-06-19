@@ -267,7 +267,7 @@ html, body {
   padding-top: 125px;
   box-sizing: border-box;
   overflow-y: auto;
-  background:#63645E;
+  background-image: url(images/albumbgINVERT.png);
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   border:3px solid #232323;
