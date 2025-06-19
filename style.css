@@ -24,7 +24,7 @@ html, body {
   src: url(images/EkMukta-ExtraBold.ttf);
 }
 
-.indexBody {
+.bodyBackground {
   background-image: url(images/albumbg.png);
   background-size: cover;
   background-repeat: repeat;
@@ -36,7 +36,7 @@ html, body {
   margin-top: .01rem;
   padding-bottom: 100px;
   text-align: center;
-  color: #EE6C84;
+  color: #1D1D1B;
 }
 
 #indexAlbum img {
@@ -44,14 +44,15 @@ html, body {
   margin: auto;
   width: 25% !important;
   animation: mymove 4s infinite;
+  border: 2px solid black;
 }
 
 @keyframes mymove {
     0%, 100% {
-    box-shadow: 0 0 15px 10px #EE6C84;
+    box-shadow: 0 0 15px 10px white;
   }
   50% {
-    box-shadow: 0 0 30px 20px #EE6C84;
+    box-shadow: 0 0 30px 20px white;
   }
 }
 
@@ -66,11 +67,11 @@ html, body {
 }
 
 #albumName {
-  justify-content: space-between;
+  justify-content: center;
   display: flex;
   width: 500px;
   font: 20px EkMukta;
-  color: #EE6C84;
+  color: #1D1D1B;
 }
 
 #albumName h2 {
@@ -80,8 +81,8 @@ html, body {
 
 #listenButton {
   padding: .5em;
-  border: 1px solid #EE6C84;
-  background-color:#EE6C84;
+  border: 2px solid #63645E;
+  background-color:#63645E;
 }
 
 #listenButton:hover {
@@ -108,11 +109,19 @@ html, body {
 }
 
 #ticketButton {
+  display: flex;
+  align-items: center;
+  align-items:center;
   padding: .5em;
   background-image: url(images/auhtourbg.png);
   background-size: cover;
   background-repeat: repeat;
   
+}
+
+.arrowGif {
+  width: 40px;
+  height:auto;
 }
 
 #ticketButton:hover {
@@ -182,7 +191,7 @@ html, body {
 }
 
 #menuToggle a:hover {
-  color:#3C3F48;
+  text-decoration: underline;
 }
 
 #menuToggle input {
@@ -208,7 +217,7 @@ html, body {
   margin-bottom: 5px;
   position: relative;
 
-  background:#EE6C84;
+  background:#1D1D1B;
   border-radius: 3px;
 
   z-index: 1;
@@ -258,7 +267,7 @@ html, body {
   padding-top: 125px;
   box-sizing: border-box;
   overflow-y: auto;
-  background:#EE6C84;
+  background:#63645E;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   border:3px solid #232323;
@@ -287,13 +296,6 @@ html, body {
   transform: none;
 }
 
-
-.musicBody {
-  background-image: url(images/albumbg.png);
-  background-size: cover;
-  background-repeat: repeat;
-  background-attachment: fixed;
-}
 
 .featuredRelease {
   display: flex;
@@ -386,13 +388,61 @@ html, body {
   text-decoration: underline;
 }
 
+.tourTickets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+
+.tourBorder {
+  align-items: baseline;
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  border: 2px solid black;
+}
+
+.tourBorder:hover {
+  border: 2px solid white;
+}
+
+.tourDates {
+  font: italic bold 12px Arial Black;
+  padding-right: 2rem;
+}
+
+.tourVenue {
+  font: bold 18px Arial Black;
+  padding-right: 2rem;
+}
+
+.tourLocation {
+  font: bold 14px Arial Black;
+  padding-right: 2rem;
+}
+
+.tourLinkBorder {
+  border: 2px solid black;
+  padding: .5rem;
+  background-color: #63645E;
+}
+
+.tourLink {
+  font: bold 15px Arial Black;
+  color: white;
+  text-decoration: none;
+}
+
 footer a {
     color: white;
     text-decoration: none;
 }
 
 footer {
-  background-color: #EE6C84;
+  background-color: #63645E;
   padding: 2rem;
   font: 10px Arial Black, sans-serif;
   color: white;
