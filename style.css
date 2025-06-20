@@ -183,11 +183,7 @@ html, body {
   text-decoration: none;
   color:white;
   transition: color 0.3s ease;
-  text-shadow: 
-  -1px -1px 0 black,
-  1px -1px 0 black,
-  -1px 1px 0 black,
-  1px 1px 0 black;
+  
 }
 
 #menuToggle a:hover {
@@ -258,7 +254,7 @@ html, body {
 
 #menu
 {
-  position: absolute;
+  /*position: absolute;*/
   max-width: 300px;
   width: 100vw;
   height: 1000px;
@@ -267,10 +263,13 @@ html, body {
   padding-top: 125px;
   box-sizing: border-box;
   overflow-y: auto;
-  background-image: url(images/albumbgINVERT.png);
+  background-image: url(images/auh1invert.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
-  border:3px solid #232323;
+
   
   transform-origin: 0% 0%;
   transform: translate(-100%, 0);
@@ -463,11 +462,15 @@ footer a {
 }
 
 footer {
-  background-color: #63645E;
+  /*background-color: #63645E; */
+  background-image: url(images/darkCarnival.jpg);
   padding: 2rem;
   font: 10px Arial Black, sans-serif;
   color: white;
   text-align: center;
+  background-size: cover;
+  background-repeat: repeat;
+  background-attachment: fixed;
 }
 
 .footerTop, .footerBottom {
