@@ -1,0 +1,151 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "Firefox",
+      "version": "140.0.2"
+    },
+    "browser": {
+      "name": "Firefox",
+      "version": "140.0.2"
+    },
+    "pages": [
+      {
+        "id": "page_1",
+        "pageTimings": {
+          "onContentLoad": 147,
+          "onLoad": 197
+        },
+        "startedDateTime": "2025-07-04T18:00:12.251-04:00",
+        "title": "http://127.0.0.1:5500/store.html"
+      }
+    ],
+    "entries": [
+      {
+        "startedDateTime": "2025-07-04T18:00:12.251-04:00",
+        "request": {
+          "bodySize": 0,
+          "method": "GET",
+          "url": "http://localhost:3000/catalog",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "Host",
+              "value": "localhost:3000"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:140.0) Gecko/20100101 Firefox/140.0"
+            },
+            {
+              "name": "Accept",
+              "value": "*/*"
+            },
+            {
+              "name": "Accept-Language",
+              "value": "en-US,en;q=0.5"
+            },
+            {
+              "name": "Accept-Encoding",
+              "value": "gzip, deflate, br, zstd"
+            },
+            {
+              "name": "Referer",
+              "value": "http://127.0.0.1:5500/"
+            },
+            {
+              "name": "Origin",
+              "value": "http://127.0.0.1:5500"
+            },
+            {
+              "name": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "name": "Sec-Fetch-Dest",
+              "value": "empty"
+            },
+            {
+              "name": "Sec-Fetch-Mode",
+              "value": "cors"
+            },
+            {
+              "name": "Sec-Fetch-Site",
+              "value": "cross-site"
+            },
+            {
+              "name": "Priority",
+              "value": "u=4"
+            }
+          ],
+          "cookies": [],
+          "queryString": [],
+          "headersSize": 405
+        },
+        "response": {
+          "status": 200,
+          "statusText": "OK",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "name": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "name": "Content-Length",
+              "value": "1492"
+            },
+            {
+              "name": "ETag",
+              "value": "W/\"5d4-LWR8cHv8pIjwfc9aWhm35l30rkk\""
+            },
+            {
+              "name": "Date",
+              "value": "Fri, 04 Jul 2025 22:00:12 GMT"
+            },
+            {
+              "name": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "name": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "mimeType": "application/json; charset=utf-8",
+            "size": 1492,
+            "text": "[{\"id\":\"B5HWJ73OBBRN7H2YZRYYQWZ4\",\"name\":\"What Lies Ahead of Me CD\",\"description\":\"\",\"imageUrl\":null},{\"id\":\"QJYQXGW5IJLDGGRQEBLAKOVC\",\"name\":\"AUH SUMMER 2025 TOUR POSTER\",\"description\":\"POOOP\",\"imageUrl\":\"https://items-images-sandbox.s3.us-west-2.amazonaws.com/files/0f97c8497c37fbb202bfaab88a391d0cdb80efae/original.jpeg\"},{\"id\":\"H2ROUEAJKLEZIYW56O4IAVCY\",\"name\":\"BLACK LP T-SHIRT\",\"description\":\"\",\"imageUrl\":\"https://items-images-sandbox.s3.us-west-2.amazonaws.com/files/209341450211b25b8b7dbc6c5c03e6c6da5592ea/original.png\"},{\"id\":\"IWZTB7E5JRQRHM4UFGOWN44Q\",\"name\":\"Collider EP\",\"description\":\"\",\"imageUrl\":null},{\"id\":\"T3F4STX35CKITGNZAG675UB6\",\"name\":\"HOODIE\",\"description\":\"\",\"imageUrl\":null},{\"id\":\"DO7TZ3ILM2LLU6YMXD5Z3RVY\",\"name\":\"What Lies Ahead Of Me Vinyl\",\"description\":\"\",\"imageUrl\":null},{\"id\":\"E52TGMOYRD2VDNDLAQXYESVK\",\"name\":\"HAT\",\"description\":\"\",\"imageUrl\":\"https://items-images-sandbox.s3.us-west-2.amazonaws.com/files/f6e342a88fc0bc14d9e9fbf4ce5cf7154d7e09c4/original.jpeg\"},{\"id\":\"SJSGKZTVBCD7ULWJTST6C5WU\",\"name\":\"Split 7\\\"\",\"description\":\"\",\"imageUrl\":null},{\"id\":\"TE3JMVVT7EUN6WQG3YH35UAU\",\"name\":\"AUH SUMMER 2025 TOUR T-SHIRT\",\"description\":\"\",\"imageUrl\":\"https://items-images-sandbox.s3.us-west-2.amazonaws.com/files/a11502ff567e672f44f728808eebe4457dd8be3d/original.jpeg\"},{\"id\":\"RCDJMROCNXUQIB4HU2J4227E\",\"name\":\"BLACK AUH T-SHIRT\",\"description\":\"\",\"imageUrl\":null},{\"id\":\"WS3E6BH5QEZ6X63SI7DYMZCO\",\"name\":\"WHITE LP T-SHIRT\",\"description\":\"\",\"imageUrl\":null}]"
+          },
+          "redirectURL": "",
+          "headersSize": 270,
+          "bodySize": 1762
+        },
+        "cache": {},
+        "timings": {
+          "blocked": -1,
+          "dns": 0,
+          "connect": 0,
+          "ssl": 0,
+          "send": 0,
+          "wait": 311,
+          "receive": 0
+        },
+        "time": 311,
+        "_securityState": "insecure",
+        "serverIPAddress": "127.0.0.1",
+        "connection": "3000",
+        "pageref": "page_1"
+      }
+    ]
+  }
+}

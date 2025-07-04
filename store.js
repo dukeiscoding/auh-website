@@ -1,47 +1,57 @@
-const productGrid = document.getElementById("productGrid");
+document.addEventListener("DOMContentLoaded", async () => {
+    await fetchCatalog();
+});
 
-fetch("http://localhost:3000/products")
-  .then(res => res.json())
-  .then(data => {
-  console.log("Square API response:", data);
+async function fetchCatalog() {
+    console.log("Fetching catalog...");
 
-  if (!data.objects) {
-    productGrid.innerHTML = "<p>No products found or invalid response from Square.</p>";
-    return;
-  }
+    try {
+        const response = await fetch("http://localhost:3000/catalog");
+        const catalog = await response.json();
 
-  const items = data.objects.filter(obj => obj.type === "ITEM");
+        console.log("Raw catalog data:", catalog);
 
-    items.forEach(item => {
-      const name = item.item_data.name;
-      const id = item.id;
+        const catalogContainer = document.getElementById("catalog");
 
-      // Optional: use description if available
-      const description = item.item_data.description || "";
+        if (!catalogContainer) {
+            console.error("Catalog container not found.");
+            return;
+        }
 
-      // Use a placeholder if no image (Square doesn't always provide one)
-      const image = item.item_data.image_url || "images/placeholder.jpg";
+        if (!Array.isArray(catalog) || catalog.length === 0) {
+            catalogContainer.innerHTML = "<p>No items available.</p>";
+            return;
+        }
 
-      // Price is stored in cents — convert to dollars
-      const price = item.item_data.variations?.[0]?.item_variation_data?.price_money?.amount || 0;
-      const formattedPrice = `$${(price / 100).toFixed(2)}`;
+        catalogContainer.innerHTML = "";
+        catalogContainer.classList.add("catalogGrid");
 
-      // Create a product card
-      const card = document.createElement("div");
-      card.classList.add("product-card");
+        catalog.forEach(item => {
+            const name = item.name || "Untitled";
+            const description = item.description || "";
+            const imageUrl = item.imageUrl || "images/placeholder.png";
+            const price = item.price ? `$${item.price} ${item.currency || "USD"}` : "N/A";
 
-      card.innerHTML = `
-        <a href="product.html?id=${id}">
-          <img src="${image}" alt="${name}" />
-          <h3>${name}</h3>
-          <p>${formattedPrice}</p>
-        </a>
-      `;
+            const itemCard = document.createElement("div");
+            itemCard.classList.add("catalogCard");
 
-      productGrid.appendChild(card);
-    });
-  })
-  .catch(err => {
-    console.error("Error fetching products:", err);
-    productGrid.innerHTML = "<p>Could not load products. Try again later.</p>";
-  });
+            itemCard.innerHTML = `
+                <a href="product.html?id=${item.id}" class="catalogLink">
+                    <img src="${imageUrl}" alt="${name}" class="catalogImage">
+                    <h2>${name}</h2>
+                    <p>${description}</p>
+                    <strong>${price}</strong>
+                </a>
+            `;
+
+            catalogContainer.appendChild(itemCard);
+        });
+
+    } catch (error) {
+        console.error("Failed to fetch catalog:", error);
+        const catalogContainer = document.getElementById("catalog");
+        if (catalogContainer) {
+            catalogContainer.innerHTML = "<p>Failed to load items. Please try again later.</p>";
+        }
+    }
+}
