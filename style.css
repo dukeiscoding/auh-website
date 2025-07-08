@@ -24,6 +24,10 @@ html, body {
   src: url(images/EkMukta-ExtraBold.ttf);
 }
 
+/* ===================================== */
+/* PAGE BACKGROUNDS / TITLES */
+/* ===================================== */
+
 .bodyBackground {
   background-image: url(images/albumbg.png);
   background-size: cover;
@@ -39,25 +43,237 @@ html, body {
   color: #1D1D1B;
 }
 
+/* ===================================== */
+/* SIDEBAR */
+/* ===================================== */
+
+#menuToggle {
+  display: block;
+  position: fixed;
+  top: 50px;
+  left: 50px;
+  z-index: 2;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle input {
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 3;
+  -webkit-touch-callout: none;
+}
+
+#menuToggle span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  background: #1D1D1B;
+  border-radius: 3px;
+  z-index: 2;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s cubic-bezier(.77,.2,.05,1), background 0.5s cubic-bezier(.77,.2,.05,1), opacity .55s ease;
+}
+
+#menuToggle span:first-child {
+  transform-origin: 0% 0%;
+}
+#menuToggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+#menuToggle input:checked ~ span {
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #1D1D1B;
+}
+#menuToggle input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+#menuToggle input:checked ~ span:nth-last-child(2) {
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+
+#menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 350px;
+  height: 100vh;
+  overflow: visible; /* Changed from hidden */
+  padding-top: 200px;
+  box-sizing: border-box;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+  z-index: 1;
+  background: linear-gradient(to right, 
+              rgba(0,0,0,0.3) 0%, 
+              rgba(0,0,0,0.1) 70%, 
+              transparent 100%);
+  padding-right: 200px;
+
+}
+
+#menuToggle input:checked ~ #menu {
+  transform: translateX(0);
+}
+
+#menu ul {
+  position: relative;
+  z-index: 2;
+  /* Add subtle background for readability */
+  margin: 0;
+  width: 80%;
+  
+}
+
+#menu ul li {
+  font: 24px Toledo2, sans-serif;
+  text-align: left;
+  padding: 15px 0;
+  margin: 1rem 0;
+  padding-left: 10px;
+}
+
+#menu ul li a {
+  text-decoration: none;
+  color: #1D1D1B;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 3;
+  
+  padding: 8px 15px;
+  display: inline-block;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+}
+
+#menu ul li a:hover {
+  color: #fff;
+  text-shadow: 0 0 12px rgba(255,255,255,0.8), 
+               0 0 6px rgba(0,0,0,0.8);
+}
+
+#flameCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  filter: grayscale(100%) brightness(150%) contrast(180%);
+  opacity: 1;
+}
+
+#menu ul li.active a {
+  color: #fff;
+  text-shadow: 0 0 15px rgba(255,255,255,0.9),
+               0 0 10px rgba(255,255,255,0.5),
+               0 0 5px rgba(0,0,0,0.8);
+}
+
+/* ===================================== */
+/* INDEX PAGE */
+/* ===================================== */
+
+#indexFeatured {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+#indexFeatured img {
+  width: 30%;
+  animation: mymove4 4s infinite;
+}
+
+#indexFeatured img:hover {
+  border: 3px solid white;
+}
+
+@keyframes mymove4 {
+    0%, 100% {
+    box-shadow: 0 0 20px 10px #7CA8D9;
+  }
+  50% {
+    box-shadow: 0 0 35px 25px #7CA8D9;
+  }
+}
+
+#featuredInfo {
+  text-align: center;
+  padding-top: 1rem;
+  color: #EAF2F5;
+}
+
+#featuredInfo h2 {
+  font: 26px BankGothic-MD;
+  padding-bottom: .5rem;
+  text-shadow: 0 0 15px #7CA8D9, 0 0 25px #7CA8D9, 0 0 35px #7CA8D9;
+}
+
+#featuredIndexButton {
+  display: block;
+  padding: 0.5em;
+  border: 2px solid #77613A;
+  background-color: #77613A;
+  width: 200px;
+  text-align: center;
+  margin: 1rem auto 0 auto;
+  font: bold 15px Arial Black;
+  text-decoration: none;
+  color: white;
+  border-radius: 12px;
+}
+
+#featuredIndexButton:hover {
+  border: 2px solid white;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+#featuredIndexButton a {
+  font: bold 15px Arial Black;
+  text-decoration: none;
+  color: white
+}
+
+#featuredIndexButton a:hover {
+  font: italic bold 15px Arial Black;
+  text-decoration: underline;
+}
+
 #indexAlbum img {
   display: block;
   margin: auto;
-  width: 25% !important;
+  width: 30% !important;
   animation: mymove 4s infinite;
-  border: 2px solid black;
 }
 
 @keyframes mymove {
-    0%, 100% {
-    box-shadow: 0 0 15px 10px white;
+     0%, 100% {
+    box-shadow: 0 0 20px 10px #31322D;
   }
   50% {
-    box-shadow: 0 0 30px 20px white;
+    box-shadow: 0 0 35px 25px #31322D;
   }
 }
 
 #indexAlbum img:hover {
-  border: 2px solid white;
+  border: 3px solid black;
 }
 
 #indexAlbum {
@@ -67,26 +283,36 @@ html, body {
 }
 
 #albumName {
-  justify-content: center;
-  display: flex;
-  width: 500px;
-  font: 20px EkMukta;
-  color: #1D1D1B;
+  text-align: center;
+  padding-top: 1rem;
+  color: #F86788;
 }
 
 #albumName h2 {
-  padding-top: 15px;
-  margin: 0;
+  font: 26px EkMukta;
+  padding-bottom: 0.5rem;
+  text-shadow: 0 0 15px white, 0 0 25px white, 0 0 35px white;
 }
 
 #listenButton {
-  padding: .5em;
+   display: block;
+  padding: 0.5em;
   border: 2px solid #63645E;
-  background-color:#63645E;
+  background-color: #63645E;
+  width: 200px;
+  text-align: center;
+  margin: 1rem auto 0 auto;
+  font: bold 15px Arial Black;
+  text-decoration: none;
+  color: white;
+  box-sizing: border-box;
+  border-radius: 12px;
 }
 
 #listenButton:hover {
   border: 2px solid white;
+  font-style: italic;
+  text-decoration: underline;
 }
 
 #listenButton a {
@@ -164,139 +390,91 @@ html, body {
   align-items: center;
   padding-top: 50px;
   padding-bottom: 20px;
-}
-
-#menuToggle {
-  display: block;
-  position: fixed;
-  top: 50px;
-  left: 50px;
-
-  z-index: 1;
-
-  -webkit-user-select: none;
-
-  user-select: none;
-}
-
-#menuToggle a {
-  text-decoration: none;
-  color:white;
-  transition: color 0.3s ease;
-  
-}
-
-#menuToggle a:hover {
-  text-decoration: underline;
-}
-
-#menuToggle input {
-  display: block;
-  width: 40px;
-  height: 32px;
-  position: absolute;
-  top: -7px;
-  left: -5px;
-
-  cursor: pointer;
-
-  opacity: 0;
-  z-index: 2;
-
-  -webkit-touch-callout: none;
-}
-
-#menuToggle span {
-  display: block;
-  width: 33px;
-  height: 4px;
-  margin-bottom: 5px;
-  position: relative;
-
-  background:#1D1D1B;
-  border-radius: 3px;
-
-  z-index: 1;
-
-  transform-origin: 4px 0px;
-
-  transition: transform 0.5s cubic-bezier(.77,.2,.05,1), background 0.5s cubic-bezier(.77,.2,.05,1), opacity .55s ease;
-}
-
-#menuToggle span:first-child
-{
-  transform-origin: 0% 0%;
-}
-
-#menuToggle span:nth-last-child(2)
-{
-  transform-origin: 0% 100%;
+  flex-direction: column;
 }
 
 
-#menuToggle input:checked ~ span
-{
-  opacity: 1;
-  transform: rotate(45deg) translate(-2px, -1px);
-  background: white;
-}
+/*  POLISH / ACCESSIBILITY IMPROVEMENTS */
 
-#menuToggle input:checked ~ span:nth-last-child(3)
-{
-  opacity: 0;
-  transform: rotate(0deg) scale(0.2, 0.2);
-}
 
-#menuToggle input:checked ~ span:nth-last-child(2)
-{
-  transform: rotate(-45deg) translate(0, -1px);
-}
-
-#menu
-{
-  /*position: absolute;*/
-  max-width: 300px;
-  width: 100vw;
-  height: 1000px;
-  margin: -100px 0 0 -50px;
-  padding: 50px;
-  padding-top: 125px;
-  box-sizing: border-box;
-  overflow-y: auto;
-  background-image: url(images/auh1invert.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50%;
-  list-style-type: none;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'EkMukta', sans-serif;
   -webkit-font-smoothing: antialiased;
-
-  
-  transform-origin: 0% 0%;
-  transform: translate(-100%, 0);
-  
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#menu li
-{
-  font: bold 24px EkMukta;
-  text-align: center;
-  padding: 30px 0;
-  margin: 1.5rem 0;
+/* Add smooth transition to all hover states */
+a, button, #listenButton, #ticketButton {
+  transition: all 0.3s ease;
 }
 
-#menu li label
-{
-  cursor: pointer;
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 768px) {
+
+  .pageTitle h1 {
+    font-size: 48px;
+    padding-bottom: 50px;
+  }
+
+  #indexAlbum img {
+    width: 85% !important;
+  }
+
+  #albumName {
+    width: 90%;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  #listenButton {
+    margin-top: 1rem;
+  }
+
+  #poster img {
+    width: 90%;
+    margin: auto;
+    display: block;
+  }
+
+  #ticketButton {
+    width: 85%;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .indexVideo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    text-align: center;
+  }
+
+
+  iframe {
+    width: 90% !important;
+    height: auto;
+  }
+
+  #indexTOUR {
+    padding: 2rem 1rem;
+  }
 }
 
 
-#menuToggle input:checked ~ ul
-{
-  transform: none;
-}
 
-
+/* ===================================== */
+/* MUSIC PAGE */
+/* ===================================== */
 .featuredRelease {
   display: flex;
   flex-direction: column;
@@ -331,6 +509,7 @@ html, body {
   background-color: #7CA8D9;
   padding: .5rem;
   margin-top: 10px;
+  border-radius: 12px;
 }
 
 .featuredButton:hover {
@@ -349,7 +528,7 @@ html, body {
   color: white;
 }
 
-.featuredText a:hover {
+.featuredButton a:hover {
   text-decoration: underline;
 }
 
@@ -391,6 +570,10 @@ html, body {
 .streamLink:hover {
   text-decoration: underline;
 }
+
+/* ===================================== */
+/* TOUR PAGE */
+/* ===================================== */
 
 .tourTickets {
   display: flex;
@@ -455,40 +638,84 @@ html, body {
   color: white;
   text-decoration: none;
 }
+
+.tourAnnouncements {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  font: bold 20px Arial Black;
+}
+
+/* ===================================== */
+/* STORE PAGE */
+/* ===================================== */
+
 .catalogGrid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    padding: 2rem;
+    gap: 3.5rem 2rem;
+    padding: 2rem 0;
     margin: 0 auto;
+    max-width: 1200px;
     justify-items: center;
-    max-width: 1300px;
+}
+
+@media (max-width: 768px) {
+  .catalogGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .catalogGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .catalogCard {
-    background: white;
-    padding: 1rem;
+    background: transparent;
+    padding: 0;
     text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 10px;
     font-family: Arial, sans-serif;
+    max-width: 200px;
+    width: 100%;
 }
 
+.catalogImageWrap {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+}
+
+
 .catalogImage {
-    max-width: 100%;
-    height: auto;
     object-fit: cover;
-    margin-bottom: 1rem;
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.catalogImage:hover {
+    transform: scale(1.05);
 }
 
 .catalogCard h2 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
 }
 
+
 .catalogCard p {
-    font-size: 0.9rem;
-    color: #444;
+    font-size: 0.85rem;
+    color: #000;
+    font-weight: bold;
+    margin: 0;
 }
 
 .catalogCard strong {
@@ -500,6 +727,16 @@ html, body {
     text-decoration: none;
     color: inherit;
     display: block;
+}
+
+.categoryTitle {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: left;
+    border-bottom: 2px solid black;
+    padding-bottom: 0.5rem;
 }
 
 .productContainer {
@@ -580,6 +817,10 @@ html, body {
     max-width: 100%;
   }
 }
+
+/* ===================================== */
+/* FOOTER */
+/* ===================================== */
 
 footer a {
     color: white;

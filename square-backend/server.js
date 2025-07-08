@@ -18,12 +18,13 @@ app.get("/catalog", async (req, res) => {
   console.log("📦 Fetching catalog from Square...");
 
   try {
-    const response = await client.catalogApi.listCatalog(undefined, "ITEM,ITEM_VARIATION,IMAGE");
+    const response = await client.catalogApi.listCatalog(undefined, "ITEM,ITEM_VARIATION,IMAGE,CATEGORY");
     const objects = response.result.objects || [];
 
     const items = objects.filter(obj => obj.type === "ITEM");
     const images = objects.filter(obj => obj.type === "IMAGE");
     const variations = objects.filter(obj => obj.type === "ITEM_VARIATION");
+    const categories = objects.filter(obj => obj.type === "CATEGORY");
 
     const imageMap = {};
     for (const img of images) {
@@ -37,10 +38,29 @@ app.get("/catalog", async (req, res) => {
       variationMap[itemId].push(variation);
     }
 
+    const categoryLookup = {};
+    for (const category of categories) {
+      const name = category.categoryData?.name?.trim();
+      const categoryId = category.id;
+
+      // Map each item ID to its category name
+      const itemsInCategory = category.categoryData?.items || [];
+      for (const itemRef of itemsInCategory) {
+        categoryLookup[itemRef.catalogObjectId] = name;
+      }
+    }
+
     const normalized = items.map(item => {
       const itemData = item.itemData;
       const imageId = itemData?.imageIds?.[0];
       const itemVariations = variationMap[item.id] || [];
+
+      const categoryName = categoryLookup[item.id] || "Uncategorized";
+
+      console.log("🔎 Item:", {
+        name: itemData?.name,
+        resolvedCategory: categoryName
+      });
 
       const variationsFormatted = itemVariations.map(variation => {
         const vData = variation.itemVariationData;
@@ -65,7 +85,8 @@ app.get("/catalog", async (req, res) => {
         imageUrl: imageMap[imageId] || null,
         price: defaultPrice,
         currency: defaultCurrency,
-        variations: variationsFormatted
+        variations: variationsFormatted,
+        category_name: categoryName
       };
     });
 

@@ -24,28 +24,53 @@ async function fetchCatalog() {
         }
 
         catalogContainer.innerHTML = "";
-        catalogContainer.classList.add("catalogGrid");
+
+        // Group items by category
+        const groupedItems = {};
 
         catalog.forEach(item => {
-            const name = item.name || "Untitled";
-            const description = item.description || "";
-            const imageUrl = item.imageUrl || "images/placeholder.png";
-            const price = item.price ? `$${item.price} ${item.currency || "USD"}` : "N/A";
-
-            const itemCard = document.createElement("div");
-            itemCard.classList.add("catalogCard");
-
-            itemCard.innerHTML = `
-                <a href="product.html?id=${item.id}" class="catalogLink">
-                    <img src="${imageUrl}" alt="${name}" class="catalogImage">
-                    <h2>${name}</h2>
-                    <p>${description}</p>
-                    <strong>${price}</strong>
-                </a>
-            `;
-
-            catalogContainer.appendChild(itemCard);
+            const category = item.category_name || "Uncategorized";
+            if (!groupedItems[category]) {
+                groupedItems[category] = [];
+            }
+            groupedItems[category].push(item);
         });
+
+        // Render each group
+        for (const category in groupedItems) {
+            const categoryHeading = document.createElement("h2");
+            categoryHeading.textContent = category.toUpperCase();
+            categoryHeading.classList.add("categoryTitle");
+            catalogContainer.appendChild(categoryHeading);
+
+            const grid = document.createElement("div");
+            grid.classList.add("catalogGrid");
+
+            groupedItems[category].forEach(item => {
+                const name = item.name || "Untitled";
+                const description = item.description || "";
+                const imageUrl = item.imageUrl || "images/placeholder.png";
+                const price = item.price ? `$${item.price} ${item.currency || "USD"}` : "N/A";
+
+                const itemCard = document.createElement("div");
+                itemCard.classList.add("catalogCard");
+
+                itemCard.innerHTML = `
+                    <a href="product.html?id=${item.id}" class="catalogLink">
+                        <div class="catalogImageWrap">
+                            <img src="${imageUrl}" alt="${name}" class="catalogImage">
+                        </div>
+                        <h2>${name}</h2>
+                        <p>${description}</p>
+                        <strong>${price}</strong>
+                    </a>
+                `;
+
+                grid.appendChild(itemCard);
+            });
+
+            catalogContainer.appendChild(grid);
+        }
 
     } catch (error) {
         console.error("Failed to fetch catalog:", error);
