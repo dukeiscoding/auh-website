@@ -1,88 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>all under heaven</title>
+    <link rel="icon" href="images/auhlogo512x512.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css?v=7" />
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  </head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>all under heaven</title>
-        <link rel="icon" href="images/auhlogo512x512.png" type="image/x-icon">
-        <link rel="stylesheet" href="style.css?v=7">
-        <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
-    </head>
+  <body class="bodyBackground">
+    <div class="pageWrapper">
+      <header>
+        <div class="pageTitle">
+          <h1>ALL UNDER HEAVEN</h1>
+        </div>
 
-    <body class="bodyBackground">
+        <nav role="navigation">
+          <div id="menuToggle">
+            <input type="checkbox" id="menuCheckbox" />
 
-        <header>
-            <div class="pageTitle">
-            <h1>ALL UNDER HEAVEN</h1>
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <div id="menu">
+              <div id="flameCanvas"></div>
+              <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="music.html">MUSIC</a></li>
+                <li><a href="tickets.html">TOUR</a></li>
+                <li>
+                  <a href="https://auhnj.square.site/" target="_blank">STORE</a>
+                </li>
+                <li>
+                  <a
+                    href="https://all-under-heaven.kit.com/dc9f53c274"
+                    target="_blank"
+                    >STAY UP TO DATE</a
+                  >
+                </li>
+              </ul>
             </div>
+          </div>
+        </nav>
+      </header>
 
-            <nav role="navigation">
-                <div id="menuToggle">
+      <main>
+        <section class="tourTickets">
+          <div class="tourBorder">
+            <div class="tourDates">
+              <p>August 12th, 2025</p>
+            </div>
+            <div class="tourVenue">
+              <p>Crossroads</p>
+            </div>
+            <div class="tourLocation">
+              <p>Garwood, NJ</p>
+            </div>
+            <div class="tourLinkBorder">
+              <a
+                href="https://www.eventbrite.com/e/rival-schools-at-crossroads-w-all-under-heaven-high-tickets-1375107626929"
+                class="tourLink"
+                target="_blank"
+                >TICKETS</a
+              >
+            </div>
+          </div>
+        </section>
 
-                    <input type="checkbox" id="menuCheckbox" />
+        <section class="tourAnnouncements">
+          <h2>MORE SHOWS TO BE ANNOUNCED SOON</h2>
+        </section>
+      </main>
 
-                    <span></span>
-                    <span></span>
-                    <span></span>   
-                    
-                    <div id="menu">
+      <script>
+      /*sidebar animation */
+      (() => {
+        const canvasContainer = document.getElementById("flameCanvas");
+        const scene = new THREE.Scene();
+        const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        canvasContainer.appendChild(renderer.domElement);
 
-                        <div id="flameCanvas"></div>                    
-                        <ul>
-                            <li><a href="index.html">HOME</a></li>
-                            <li><a href="music.html">MUSIC</a></li>
-                            <li><a href="tickets.html">TOUR</a></li>
-                            <li><a href="https://auhnj.square.site/" target="_blank">STORE</a></li>
-                            <li><a href="https://all-under-heaven.kit.com/dc9f53c274" target="_blank">STAY UP TO DATE</a></li>
-                        </ul>
-                        </div>    
-                        
-                </div>
-            </nav>
-            
-        </header>
+        const uniforms = {
+          time: { value: 0.0 },
+          resolution: { value: new THREE.Vector2(350, 864) },
+          mouse: { value: 0 },
+        };
 
-        <main>
-            <section class="tourTickets">
-
-                <div class="tourBorder">
-                    <div class="tourDates">
-                        <p>August 12th, 2025</p>
-                    </div>
-                    <div class="tourVenue">
-                        <p>Crossroads</p>
-                    </div>
-                    <div class="tourLocation">
-                        <p>Garwood, NJ</p>
-                    </div>
-                    <div class="tourLinkBorder">
-                        <a href="https://www.eventbrite.com/e/rival-schools-at-crossroads-w-all-under-heaven-high-tickets-1375107626929" class="tourLink" target="_blank">TICKETS</a>
-                    </div>
-                </div>
-
-            </section>
-
-            <section class="tourAnnouncements">
-                <h2>More shows to be announced soon</h2>
-            </section>
-        </main>
-
-        <script>
-  const canvasContainer = document.getElementById("flameCanvas");
-  const scene = new THREE.Scene();
-  const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-  const renderer = new THREE.WebGLRenderer({ alpha: true });
-  canvasContainer.appendChild(renderer.domElement);
-
-  const uniforms = {
-    time: { value: 0.0 },
-    resolution: { value: new THREE.Vector2() }
-  };
-
-  const material = new THREE.ShaderMaterial({
-    uniforms: uniforms,
-    fragmentShader: `
+        const material = new THREE.ShaderMaterial({
+          uniforms: uniforms,
+          fragmentShader: `
       uniform float time;
       uniform vec2 resolution;
 
@@ -130,7 +139,7 @@
         float gradient = 1.0 - uv.x;
         
         vec2 pos = vec2(gl_FragCoord.y / resolution.y, gl_FragCoord.x / resolution.x);
-        pos.y += time * 0.25;
+        pos.y += time * -0.03;
         
         float noiseTexel = pnoise(pos, 12.0, 5, 0.6);
         
@@ -140,69 +149,78 @@
         float darkestStep = smoothstep(0.0, noiseTexel, gradient - 0.3);
         
         // Darker black and white
-        vec4 flameColor = vec4(0.7);
-        vec4 midColor = vec4(0.3);
-        vec4 darkColor = vec4(0.0);
+        vec4 flameColor = vec4(0.98, .92, .94, 1.0);
+        vec4 midColor = vec4(0.88, .75, .82, 1.0);
+        vec4 darkColor = vec4(0.75, .60, .70, 1.0);
         
         vec4 color = mix(flameColor, midColor, darkerColorStep - darkestStep);
         color = mix(color, darkColor, firstStep - darkerColorStep);
         color = mix(vec4(0.0), color, firstStep);
 
+        if (color.r < 0.35) {
+            color.a = 0.0;
+        }
+
         gl_FragColor = vec4(color.rgb, color.a);
       }
     `,
-    transparent: true
-  });
+          transparent: true,
+        });
 
-  const geometry = new THREE.PlaneGeometry(2, 2);
-  const mesh = new THREE.Mesh(geometry, material);
-  scene.add(mesh);
+        const geometry = new THREE.PlaneGeometry(2, 2);
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
 
-  function resizeFlameCanvas() {
-    const width = canvasContainer.clientWidth;
-    const height = canvasContainer.clientHeight;
-    renderer.setSize(width, height);
-    uniforms.resolution.value.set(width, height);
-  }
+        function resizeFlameCanvas() {
+          const width = canvasContainer.clientWidth;
+          const height = canvasContainer.clientHeight;
+          renderer.setSize(width, height);
+          uniforms.resolution.value.set(width, height);
+        }
 
-  resizeFlameCanvas();
-  window.addEventListener('resize', resizeFlameCanvas);
+        resizeFlameCanvas();
+        window.addEventListener("resize", resizeFlameCanvas);
 
-  function animate() {
-    requestAnimationFrame(animate);
-    uniforms.time.value += 0.01;
-    renderer.render(scene, camera);
-  }
+        function animate() {
+          requestAnimationFrame(animate);
+          uniforms.time.value += 0.003;
+          renderer.render(scene, camera);
+        }
 
-  animate();
-</script>
-
-    </body>
-
+        animate();
+      })();
+    </script>
+    </div>
     <footer>
-        <div class="footerTop">
-            <nav class="footerLinks">
-                <a href="contact.html">Contact Us</a>
-                <a href="returns.html">Returns</a>
-                <a href="shipping.html">Shipping</a>
-            </nav>
+      <div class="footerTop">
+        <nav class="footerLinks">
+          <a href="contact.html">Contact Us</a>
+          <a href="returns.html">Returns</a>
+          <a href="shipping.html">Shipping</a>
+        </nav>
 
-            <nav class="footerSocials">
-                <a href="https://www.instagram.com/allunderhvn/" target="_blank"><img src="images/iglogo.svg" alt="Instagram"></a>
-                <a href="https://www.facebook.com/profile.php?id=100064778059647" target="_blank"><img src="images/fblogo.svg" alt="Facebook"></a>
-            </nav>
-        </div>
+        <nav class="footerSocials">
+          <a href="https://www.instagram.com/allunderhvn/" target="_blank"
+            ><img src="images/iglogo.svg" alt="Instagram"
+          /></a>
+          <a
+            href="https://www.facebook.com/profile.php?id=100064778059647"
+            target="_blank"
+            ><img src="images/fblogo.svg" alt="Facebook"
+          /></a>
+        </nav>
+      </div>
 
-        <div class="footerBottom">
-            <p>© 2025 All Under Heaven</p>
-            <nav class="legalLinks">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="shipping.html">Shipping Policy</a>
-                <a href="returns.html">Returns</a>
-                <a href="contact.html">Contact Info</a>
-                <a href="tos.html">Terms of Service</a>
-            </nav>
-        </div>
+      <div class="footerBottom">
+        <p>© 2025 All Under Heaven</p>
+        <nav class="legalLinks">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="shipping.html">Shipping Policy</a>
+          <a href="returns.html">Returns</a>
+          <a href="contact.html">Contact Info</a>
+          <a href="tos.html">Terms of Service</a>
+        </nav>
+      </div>
     </footer>
-
+  </body>
 </html>

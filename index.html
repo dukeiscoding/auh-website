@@ -1,67 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>all under heaven</title>
+    <link rel="icon" href="images/auhlogo512x512.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css?v=9" />
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  </head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>all under heaven</title>
-        <link rel="icon" href="images/auhlogo512x512.png" type="image/x-icon">
-        <link rel="stylesheet" href="style.css?v=8">
-        <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
-    </head>
+  <body class="bodyBackground">
+    <header>
+      <div class="pageTitle">
+        <h1>ALL UNDER HEAVEN</h1>
+      </div>
 
-    <body class="bodyBackground">
+      <nav role="navigation">
+        <div id="menuToggle">
+          <input type="checkbox" id="menuCheckbox" />
 
-        <header>
-            <div class="pageTitle">
-            <h1>ALL UNDER HEAVEN</h1>
-            </div>
+          <span></span>
+          <span></span>
+          <span></span>
 
-            <nav role="navigation">
-                <div id="menuToggle">
+          <div id="menu">
+            <div id="flameCanvas"></div>
+            <ul>
+              <li><a href="index.html">HOME</a></li>
+              <li><a href="music.html">MUSIC</a></li>
+              <li><a href="tickets.html">TOUR</a></li>
+              <li>
+                <a href="https://auhnj.square.site/" target="_blank">STORE</a>
+              </li>
+              <li>
+                <a
+                  href="https://all-under-heaven.kit.com/dc9f53c274"
+                  target="_blank"
+                  >STAY UP TO DATE</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-                    <input type="checkbox" id="menuCheckbox" />
+    <main class="indexMain">
+      <section id="indexFeatured">
+          <img
+            src="images/auh-highCover.jpg"
+            alt="auh - high. split"
+            id="featuredImage"
+          />
+        </div>
+        <div id="featuredInfo">
+          <h2>MOVING ON / SOMEONE YOU ADORE</h2>
+          <a
+            href="https://dthw.sh/allunderheavenhigh"
+            id="featuredIndexButton"
+            target="_blank"
+            >LISTEN NOW</a
+          >
+        </div>
+      </section>
 
-                    <span></span>
-                    <span></span>
-                    <span></span>   
-                    
-                    <div id="menu">
+      <section id="indexAlbum">
+        <img
+          src="images/AllUnderHeaven-WhatLiesAheadOfMe-Cover_2000x.jpg"
+          alt="all under heaven band pic"
+        />
+        <div id="albumName">
+          <div><h2>WHAT LIES AHEAD OF ME</h2></div>
+        </div>
+        <a
+          href="https://dthw.sh/whatliesaheadofme"
+          id="listenButton"
+          target="_blank"
+          >LISTEN NOW</a
+        >
+      </section>
 
-                        <div id="flameCanvas"></div>                    
-                        <ul>
-                            <li><a href="index.html">HOME</a></li>
-                            <li><a href="music.html">MUSIC</a></li>
-                            <li><a href="tickets.html">TOUR</a></li>
-                            <li><a href="https://auhnj.square.site/" target="_blank">STORE</a></li>
-                            <li><a href="https://all-under-heaven.kit.com/dc9f53c274" target="_blank">STAY UP TO DATE</a></li>
-                        </ul>
-                        </div>    
-                        
-                </div>
-            </nav>
-            
-        </header>
-
-        <main class="indexMain">
-
-            <section id="indexFeatured">
-                <img src="images/auh-highCover.jpg" alt="auh - high. split">
-                <div id="featuredInfo">
-                    <h2>ALL UNDER HEAVEN / HIGH.</h2>
-                        <a href="https://dthw.sh/allunderheavenhigh" id="featuredIndexButton" target="_blank">LISTEN NOW</a>
-                </div>
-            </section>
-
-            <section id="indexAlbum">
-                <img src="images/AllUnderHeaven-WhatLiesAheadOfMe-Cover_2000x.jpg" alt="all under heaven band pic">
-                <div id="albumName">
-                    <div><h2>WHAT LIES AHEAD OF ME</h2></div>                  
-                </div>
-                <a href="https://dthw.sh/whatliesaheadofme" id="listenButton" target="_blank">LISTEN NOW</a>           
-            </section>
-
-            <!--
+      <!--
             <section id="indexTOUR">
                 <div id="poster">
                     <img src="images/AUHflyer.jpeg" alt="AUH summer 2025 tour poster">
@@ -72,32 +91,42 @@
             </section>
             -->
 
-            <div class="indexVideo">
-                <iframe width="560" height="315"
-                src="https://www.youtube.com/embed/ONZwMJW44Qg?si=EQ7GKf0QTuPCPfWH" title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                </iframe>
-                <h2>Check out our audiotree :-)</h2>
-            </div>
-        </main>
+      <div class="indexVideoHub">
+        <div class="indexVideo">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/ONZwMJW44Qg?si=EQ7GKf0QTuPCPfWH"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          >
+          </iframe>
+        </div>
+        <h2>Check out our audiotree :-)</h2>
+      </div>
+    </main>
 
-       <script>
-  const canvasContainer = document.getElementById("flameCanvas");
-  const scene = new THREE.Scene();
-  const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-  const renderer = new THREE.WebGLRenderer({ alpha: true });
-  canvasContainer.appendChild(renderer.domElement);
+    <script>
+      /*sidebar animation */
+      (() => {
+        const canvasContainer = document.getElementById("flameCanvas");
+        const scene = new THREE.Scene();
+        const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        canvasContainer.appendChild(renderer.domElement);
 
-  const uniforms = {
-    time: { value: 0.0 },
-    resolution: { value: new THREE.Vector2() }
-  };
+        const uniforms = {
+          time: { value: 0.0 },
+          resolution: { value: new THREE.Vector2(350, 864) },
+          mouse: { value: 0 },
+        };
 
-  const material = new THREE.ShaderMaterial({
-    uniforms: uniforms,
-    fragmentShader: `
+        const material = new THREE.ShaderMaterial({
+          uniforms: uniforms,
+          fragmentShader: `
       uniform float time;
       uniform vec2 resolution;
 
@@ -145,7 +174,7 @@
         float gradient = 1.0 - uv.x;
         
         vec2 pos = vec2(gl_FragCoord.y / resolution.y, gl_FragCoord.x / resolution.x);
-        pos.y += time * 0.25;
+        pos.y += time * -0.03;
         
         float noiseTexel = pnoise(pos, 12.0, 5, 0.6);
         
@@ -155,68 +184,81 @@
         float darkestStep = smoothstep(0.0, noiseTexel, gradient - 0.3);
         
         // Darker black and white
-        vec4 flameColor = vec4(0.7);
-        vec4 midColor = vec4(0.3);
-        vec4 darkColor = vec4(0.0);
+        vec4 flameColor = vec4(0.98, .92, .94, 1.0);
+        vec4 midColor = vec4(0.88, .75, .82, 1.0);
+        vec4 darkColor = vec4(0.75, .60, .70, 1.0);
         
         vec4 color = mix(flameColor, midColor, darkerColorStep - darkestStep);
         color = mix(color, darkColor, firstStep - darkerColorStep);
         color = mix(vec4(0.0), color, firstStep);
 
+        if (color.r < 0.35) {
+            color.a = 0.0;
+        }
+
         gl_FragColor = vec4(color.rgb, color.a);
       }
     `,
-    transparent: true
-  });
+          transparent: true,
+        });
 
-  const geometry = new THREE.PlaneGeometry(2, 2);
-  const mesh = new THREE.Mesh(geometry, material);
-  scene.add(mesh);
+        const geometry = new THREE.PlaneGeometry(2, 2);
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
 
-  function resizeFlameCanvas() {
-    const width = canvasContainer.clientWidth;
-    const height = canvasContainer.clientHeight;
-    renderer.setSize(width, height);
-    uniforms.resolution.value.set(width, height);
-  }
+        function resizeFlameCanvas() {
+          const width = canvasContainer.clientWidth;
+          const height = canvasContainer.clientHeight;
+          renderer.setSize(width, height);
+          uniforms.resolution.value.set(width, height);
+        }
 
-  resizeFlameCanvas();
-  window.addEventListener('resize', resizeFlameCanvas);
+        resizeFlameCanvas();
+        window.addEventListener("resize", resizeFlameCanvas);
 
-  function animate() {
-    requestAnimationFrame(animate);
-    uniforms.time.value += 0.01;
-    renderer.render(scene, camera);
-  }
+        function animate() {
+          requestAnimationFrame(animate);
+          uniforms.time.value += 0.003;
+          renderer.render(scene, camera);
+        }
 
-  animate();
-</script>
-    </body>
+        animate();
+      })();
+    </script>
 
     <footer>
-        <div class="footerTop">
-            <nav class="footerLinks">
-                <a href="contact.html">Contact Us</a>
-                <a href="returns.html">Returns</a>
-                <a href="shipping.html">Shipping</a>
-            </nav>
+    <div class="footerTop">
+      <nav class="footerLinks">
+        <a href="contact.html">Contact Us</a>
+        <a href="returns.html">Returns</a>
+        <a href="shipping.html">Shipping</a>
+      </nav>
 
-            <nav class="footerSocials">
-                <a href="https://www.instagram.com/allunderhvn/" target="_blank"><img src="images/iglogo.svg" alt="Instagram"></a>
-                <a href="https://www.facebook.com/profile.php?id=100064778059647" target="_blank"><img src="images/fblogo.svg" alt="Facebook"></a>
-            </nav>
-        </div>
+      <nav class="footerSocials">
+        <a href="https://www.instagram.com/allunderhvn/" target="_blank"
+          ><img src="images/iglogo.svg" alt="Instagram"
+        /></a>
+        <a
+          href="https://www.facebook.com/profile.php?id=100064778059647"
+          target="_blank"
+          ><img src="images/fblogo.svg" alt="Facebook"
+        /></a>
+      </nav>
+    </div>
 
-        <div class="footerBottom">
-            <p>© 2025 All Under Heaven</p>
-            <nav class="legalLinks">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="shipping.html">Shipping Policy</a>
-                <a href="returns.html">Returns</a>
-                <a href="contact.html">Contact Info</a>
-                <a href="tos.html">Terms of Service</a>
-            </nav>
-        </div>
-    </footer>
+    <div class="footerBottom">
+      <p>© 2025 All Under Heaven</p>
+      <nav class="legalLinks">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="shipping.html">Shipping Policy</a>
+        <a href="returns.html">Returns</a>
+        <a href="contact.html">Contact Info</a>
+        <a href="tos.html">Terms of Service</a>
+      </nav>
+    </div>
+  </footer>
 
+  </body>
+
+  
 </html>

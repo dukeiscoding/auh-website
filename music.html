@@ -84,20 +84,23 @@
         </main>
 
         <script>
-  const canvasContainer = document.getElementById("flameCanvas");
-  const scene = new THREE.Scene();
-  const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-  const renderer = new THREE.WebGLRenderer({ alpha: true });
-  canvasContainer.appendChild(renderer.domElement);
+      /*sidebar animation */
+      (() => {
+        const canvasContainer = document.getElementById("flameCanvas");
+        const scene = new THREE.Scene();
+        const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        canvasContainer.appendChild(renderer.domElement);
 
-  const uniforms = {
-    time: { value: 0.0 },
-    resolution: { value: new THREE.Vector2() }
-  };
+        const uniforms = {
+          time: { value: 0.0 },
+          resolution: { value: new THREE.Vector2(350, 864) },
+          mouse: { value: 0 },
+        };
 
-  const material = new THREE.ShaderMaterial({
-    uniforms: uniforms,
-    fragmentShader: `
+        const material = new THREE.ShaderMaterial({
+          uniforms: uniforms,
+          fragmentShader: `
       uniform float time;
       uniform vec2 resolution;
 
@@ -145,7 +148,7 @@
         float gradient = 1.0 - uv.x;
         
         vec2 pos = vec2(gl_FragCoord.y / resolution.y, gl_FragCoord.x / resolution.x);
-        pos.y += time * 0.25;
+        pos.y += time * -0.03;
         
         float noiseTexel = pnoise(pos, 12.0, 5, 0.6);
         
@@ -155,42 +158,47 @@
         float darkestStep = smoothstep(0.0, noiseTexel, gradient - 0.3);
         
         // Darker black and white
-        vec4 flameColor = vec4(0.7);
-        vec4 midColor = vec4(0.3);
-        vec4 darkColor = vec4(0.0);
+        vec4 flameColor = vec4(0.98, .92, .94, 1.0);
+        vec4 midColor = vec4(0.88, .75, .82, 1.0);
+        vec4 darkColor = vec4(0.75, .60, .70, 1.0);
         
         vec4 color = mix(flameColor, midColor, darkerColorStep - darkestStep);
         color = mix(color, darkColor, firstStep - darkerColorStep);
         color = mix(vec4(0.0), color, firstStep);
 
+        if (color.r < 0.35) {
+            color.a = 0.0;
+        }
+
         gl_FragColor = vec4(color.rgb, color.a);
       }
     `,
-    transparent: true
-  });
+          transparent: true,
+        });
 
-  const geometry = new THREE.PlaneGeometry(2, 2);
-  const mesh = new THREE.Mesh(geometry, material);
-  scene.add(mesh);
+        const geometry = new THREE.PlaneGeometry(2, 2);
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
 
-  function resizeFlameCanvas() {
-    const width = canvasContainer.clientWidth;
-    const height = canvasContainer.clientHeight;
-    renderer.setSize(width, height);
-    uniforms.resolution.value.set(width, height);
-  }
+        function resizeFlameCanvas() {
+          const width = canvasContainer.clientWidth;
+          const height = canvasContainer.clientHeight;
+          renderer.setSize(width, height);
+          uniforms.resolution.value.set(width, height);
+        }
 
-  resizeFlameCanvas();
-  window.addEventListener('resize', resizeFlameCanvas);
+        resizeFlameCanvas();
+        window.addEventListener("resize", resizeFlameCanvas);
 
-  function animate() {
-    requestAnimationFrame(animate);
-    uniforms.time.value += 0.01;
-    renderer.render(scene, camera);
-  }
+        function animate() {
+          requestAnimationFrame(animate);
+          uniforms.time.value += 0.003;
+          renderer.render(scene, camera);
+        }
 
-  animate();
-</script>
+        animate();
+      })();
+    </script>
 
     </body>
 

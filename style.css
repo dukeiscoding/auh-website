@@ -5,9 +5,18 @@
 }
 
 html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
 }
+
+.pageWrapper {
+  flex: 1 0 auto;
+}
+  
+
 
 @font-face {
   font-family: "BankGothic-MD";
@@ -25,11 +34,11 @@ html, body {
 }
 
 /* ===================================== */
-/* PAGE BACKGROUNDS / TITLES */
+/* PAGE BACKGROUNDS / TITLES / IMAGE WRAPPERS */
 /* ===================================== */
 
 .bodyBackground {
-  background-image: url(images/albumbg.png);
+  background-image: url(images/skyBG.png);
   background-size: cover;
   background-repeat: repeat;
   background-attachment: fixed;
@@ -41,6 +50,7 @@ html, body {
   padding-bottom: 100px;
   text-align: center;
   color: #1D1D1B;
+  
 }
 
 /* ===================================== */
@@ -115,10 +125,7 @@ html, body {
   transform: translateX(-100%);
   transition: transform 0.5s ease;
   z-index: 1;
-  background: linear-gradient(to right, 
-              rgba(0,0,0,0.3) 0%, 
-              rgba(0,0,0,0.1) 70%, 
-              transparent 100%);
+
   padding-right: 200px;
 
 }
@@ -167,13 +174,10 @@ html, body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
   z-index: 0;
   pointer-events: none;
-  mix-blend-mode: screen;
-  filter: grayscale(100%) brightness(150%) contrast(180%);
-  opacity: 1;
+  width: 100%;
+  height: 100%;
 }
 
 #menu ul li.active a {
@@ -188,16 +192,22 @@ html, body {
 /* ===================================== */
 
 #indexFeatured {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 2rem;
   padding-bottom: 4rem;
+  z-index: 1;
+  justify-content: center;
 }
 
-#indexFeatured img {
+#featuredImage {
+  display: block;
+  max-width: 100%;
+  z-index: 1;
   width: 30%;
-  animation: mymove4 4s infinite;
+  justify-content: center;
 }
 
 #indexFeatured img:hover {
@@ -222,14 +232,15 @@ html, body {
 #featuredInfo h2 {
   font: 26px BankGothic-MD;
   padding-bottom: .5rem;
-  text-shadow: 0 0 15px #7CA8D9, 0 0 25px #7CA8D9, 0 0 35px #7CA8D9;
+  text-shadow: 0 0 20px #7CA8D9, 0 0 30px #7CA8D9, 0 0 40px #7CA8D9;
 }
 
 #featuredIndexButton {
   display: block;
   padding: 0.5em;
   border: 2px solid #77613A;
-  background-color: #77613A;
+  background-image: url(images/auh-highListenButton.png);
+  background-size: cover;
   width: 200px;
   text-align: center;
   margin: 1rem auto 0 auto;
@@ -248,7 +259,7 @@ html, body {
 #featuredIndexButton a {
   font: bold 15px Arial Black;
   text-decoration: none;
-  color: white
+  color: white;
 }
 
 #featuredIndexButton a:hover {
@@ -260,15 +271,14 @@ html, body {
   display: block;
   margin: auto;
   width: 30% !important;
-  animation: mymove 4s infinite;
 }
 
 @keyframes mymove {
      0%, 100% {
-    box-shadow: 0 0 20px 10px #31322D;
+    box-shadow: 0 0 20px 10px white;
   }
   50% {
-    box-shadow: 0 0 35px 25px #31322D;
+    box-shadow: 0 0 35px 25px white;
   }
 }
 
@@ -289,16 +299,18 @@ html, body {
 }
 
 #albumName h2 {
-  font: 26px EkMukta;
+  font: 26px Toledo2;
   padding-bottom: 0.5rem;
   text-shadow: 0 0 15px white, 0 0 25px white, 0 0 35px white;
+  font-weight: 500;
 }
 
 #listenButton {
    display: block;
   padding: 0.5em;
   border: 2px solid #63645E;
-  background-color: #63645E;
+  background-image: url(images/albumbgINVERT.png);
+  background-size: cover;
   width: 200px;
   text-align: center;
   margin: 1rem auto 0 auto;
@@ -389,8 +401,16 @@ html, body {
   justify-content: center;
   align-items: center;
   padding-top: 50px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   flex-direction: column;
+  
+}
+
+.indexVideoHub {
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Ensures text centering */
+  padding-bottom: 25px;
 }
 
 
@@ -425,6 +445,10 @@ img {
   }
 
   #indexAlbum img {
+    width: 85% !important;
+  }
+
+  #indexFeatured img {
     width: 85% !important;
   }
 
@@ -596,7 +620,8 @@ img {
 
 .tourBorder:hover {
   border: 2px solid white;
-  background-image: url(images/albumbgINVERT.png);
+  background-image: url(images/footerBG.png);
+  background-size: cover;
   color: white;
   text-shadow: 
   -1px -1px 0 black,
@@ -625,8 +650,13 @@ img {
 .tourLinkBorder {
   border: 2px solid black;
   padding: .4rem;
-  background-color: #63645E;
+  background-color: #fdef73;
   flex-shrink: 0;
+  text-shadow: 
+  -1px -1px 0 black,
+  1px -1px 0 black,
+  -1px 1px 0 black,
+  1px 1px 0 black;
 }
 
 .tourLinkBorder:hover {
@@ -645,7 +675,7 @@ img {
   align-items: center;
   gap: 2rem;
   padding: 2rem;
-  font: bold 20px Arial Black;
+  font: bold 20px Toledo2 Black;
 }
 
 /* ===================================== */
@@ -828,29 +858,38 @@ footer a {
 }
 
 footer {
-  /*background-color: #63645E; */
-  background-image: url(images/darkCarnival.jpg);
-  padding: 2rem;
-  font: 10px Arial Black, sans-serif;
+  background-image: url(images/footerBG.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-attachment: scroll;
+
+  padding: 6rem 2rem 4rem 2rem; /* ⬅️ increased height from padding */
+  font: 12px Arial Black, sans-serif;
   color: white;
   text-align: center;
-  background-size: cover;
-  background-repeat: repeat;
-  background-attachment: fixed;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
 }
 
-.footerTop, .footerBottom {
+.footerTop {
+  margin-bottom: 3rem;
+}
+.footerBottom {
   margin-bottom: 2rem;
+  gap: 1rem;
 }
 
 .footerLinks {
-    margin-bottom: 1rem;
+    margin-bottom: 2.5rem;
 }
 
 .footerLinks a {
     font-size: 1rem;
     margin: 0 0.75rem;
     font-style: italic;
+    margin-top: 2rem;
  
 }
 
@@ -859,16 +898,21 @@ footer {
 }
 
 .footerSocials img {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     filter: brightness(100);
 }
 
 .footerBottom a {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     font-weight: bold;
-    margin: 0 2rem;
+    margin: 4rem;
+    gap: 1rem;
     text-decoration: none;
+}
+
+.footerBottom p {
+  margin-bottom: 1.2rem;
 }
 
 a:hover {
