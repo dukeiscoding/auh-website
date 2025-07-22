@@ -1,231 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>all under heaven</title>
+    <link rel="icon" href="images/auhlogo512x512.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css?v=7" />
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  </head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>all under heaven</title>
-        <link rel="icon" href="images/auhlogo512x512.png" type="image/x-icon">
-        <link rel="stylesheet" href="style.css?v=7">
-        <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
-    </head>
+  <body class="bodyBackground">
+    <header>
+      <div class="pageTitle">
+        <h1 class="noisyText">ALL UNDER HEAVEN</h1>
+      </div>
 
-    <body class="bodyBackground">
+      <nav role="navigation">
+        <div id="menuToggle">
+          <input type="checkbox" id="menuCheckbox" />
 
-        <header>
-            <div class="pageTitle">
-            <h1>ALL UNDER HEAVEN</h1>
+          <span></span>
+          <span></span>
+          <span></span>
+
+          <div id="menu">
+            <div id="flameCanvas"></div>
+            <ul>
+              <li><a href="index.html">HOME</a></li>
+              <li><a href="music.html">MUSIC</a></li>
+              <li><a href="tickets.html">TOUR</a></li>
+              <li>
+                <a href="https://auhnj.square.site/" target="_blank">STORE</a>
+              </li>
+              <li>
+                <a
+                  href="https://all-under-heaven.kit.com/dc9f53c274"
+                  target="_blank"
+                  >STAY UP TO DATE</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="featuredRelease">
+        <img src="images/auh-highCover.jpg" alt="AUH / High. Cover" />
+
+        <div class="featuredButtonWrapper">
+          <canvas id="cloudCanvas"></canvas>
+
+          <div class="featuredButton">
+            <div class="featuredText">
+              <h2>ALL UNDER HEAVEN / HIGH.</h2>
             </div>
+            <a
+              href="https://dthw.sh/allunderheavenhigh"
+              class="featuredLink"
+              target="_blank"
+              >CLICK TO STREAM</a
+            >
+          </div>
+        </div>
+      </section>
 
-            <nav role="navigation">
-                <div id="menuToggle">
-
-                    <input type="checkbox" id="menuCheckbox" />
-
-                    <span></span>
-                    <span></span>
-                    <span></span>   
-                    
-                    <div id="menu">
-
-                        <div id="flameCanvas"></div>                    
-                        <ul>
-                            <li><a href="index.html">HOME</a></li>
-                            <li><a href="music.html">MUSIC</a></li>
-                            <li><a href="tickets.html">TOUR</a></li>
-                            <li><a href="https://auhnj.square.site/" target="_blank">STORE</a></li>
-                            <li><a href="https://all-under-heaven.kit.com/dc9f53c274" target="_blank">STAY UP TO DATE</a></li>
-                        </ul>
-                        </div>    
-                        
-                </div>
-            </nav>
-            
-        </header>
-
-        <main>
-
-            <section class="featuredRelease">
-                <img src="images/auh-highCover.jpg" alt="AUH / High. Cover">
-                <div class="featuredButton">
-                    <div class="featuredText">
-                        <h2>ALL UNDER HEAVEN / HIGH.</h2>
-                    </div>
-                    <a href="https://dthw.sh/allunderheavenhigh" class="featuredLink" target="_blank">CLICK TO STREAM</a>
-                </div>
-            </section>
-
-            <section class="albumGrid">
-
-                <div class="albumCard">
-                    <img src="images/AllUnderHeaven-WhatLiesAheadOfMe-Cover_2000x.jpg" alt="What Lies Ahead of Me Cover">
-                    <p class="albumTitle">What Lies Ahead of Me</p>
-                    <a href="https://linktr.ee/allunderheaven" class="streamLink" target="_blank">CLICK TO STREAM</a>
-                </div>
-
-                <div class="albumCard">
-                    <img src="images/auh-lt-glareCover.jpg" alt="AUH / Leaving Time / Glare Cover">
-                    <p class="albumTitle">Split</p>
-                    <a href="https://linktr.ee/allunderheaven" class="streamLink" target="_blank">CLICK TO STREAM</a>
-                </div>
-
-                <div class="albumCard">
-                    <img src="images/dsa2acCover.jpg" alt="DSA 2 / Alley Cat Cover">
-                    <p class="albumTitle">Don't Suffer Alone / Alley Cat</p>
-                    <a href="https://linktr.ee/allunderheaven" class="streamLink" target="_blank">CLICK TO STREAM</a>
-                </div>
-
-                <div class="albumCard">
-                    <img src="images/colliderCover.jpg" alt="Collider Cover">
-                    <p class="albumTitle">Collider</p>
-                    <a href="https://linktr.ee/allunderheaven" class="streamLink" target="_blank">CLICK TO STREAM</a>
-                </div>  
-            </section>
-        </main>
-
-        <script>
-      /*sidebar animation */
-      (() => {
-        const canvasContainer = document.getElementById("flameCanvas");
-        const scene = new THREE.Scene();
-        const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-        const renderer = new THREE.WebGLRenderer({ alpha: true });
-        canvasContainer.appendChild(renderer.domElement);
-
-        const uniforms = {
-          time: { value: 0.0 },
-          resolution: { value: new THREE.Vector2(350, 864) },
-          mouse: { value: 0 },
-        };
-
-        const material = new THREE.ShaderMaterial({
-          uniforms: uniforms,
-          fragmentShader: `
-      uniform float time;
-      uniform vec2 resolution;
-
-      float rand(vec2 co){
-          return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
-      }
-
-      float hermite(float t) {
-        return t * t * (3.0 - 2.0 * t);
-      }
-
-      float noise(vec2 co, float frequency) {
-        vec2 v = vec2(co.x * frequency, co.y * frequency);
-        float ix1 = floor(v.x);
-        float iy1 = floor(v.y);
-        float ix2 = floor(v.x + 1.0);
-        float iy2 = floor(v.y + 1.0);
-
-        float fx = hermite(fract(v.x));
-        float fy = hermite(fract(v.y));
-
-        float fade1 = mix(rand(vec2(ix1, iy1)), rand(vec2(ix2, iy1)), fx);
-        float fade2 = mix(rand(vec2(ix1, iy2)), rand(vec2(ix2, iy2)), fx);
-
-        return mix(fade1, fade2, fy);
-      }
-
-      float pnoise(vec2 co, float freq, int steps, float persistence) {
-        float value = 0.0;
-        float ampl = 1.0;
-        float sum = 0.0;
-        for(int i=0 ; i<5 ; i++) {
-          sum += ampl;
-          value += noise(co, freq) * ampl;
-          freq *= 2.0;
-          ampl *= persistence;
-        }
-        return value / sum;
-      }
-
-      void main() {
-        vec2 uv = gl_FragCoord.xy / resolution.xy;
-        
-        // Base on left, flames to right
-        float gradient = 1.0 - uv.x;
-        
-        vec2 pos = vec2(gl_FragCoord.y / resolution.y, gl_FragCoord.x / resolution.x);
-        pos.y += time * -0.03;
-        
-        float noiseTexel = pnoise(pos, 12.0, 5, 0.6);
-        
-        // Flame steps
-        float firstStep = smoothstep(0.0, noiseTexel, gradient);
-        float darkerColorStep = smoothstep(0.0, noiseTexel, gradient - 0.15);
-        float darkestStep = smoothstep(0.0, noiseTexel, gradient - 0.3);
-        
-        // Darker black and white
-        vec4 flameColor = vec4(0.98, .92, .94, 1.0);
-        vec4 midColor = vec4(0.88, .75, .82, 1.0);
-        vec4 darkColor = vec4(0.75, .60, .70, 1.0);
-        
-        vec4 color = mix(flameColor, midColor, darkerColorStep - darkestStep);
-        color = mix(color, darkColor, firstStep - darkerColorStep);
-        color = mix(vec4(0.0), color, firstStep);
-
-        if (color.r < 0.35) {
-            color.a = 0.0;
-        }
-
-        gl_FragColor = vec4(color.rgb, color.a);
-      }
-    `,
-          transparent: true,
-        });
-
-        const geometry = new THREE.PlaneGeometry(2, 2);
-        const mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);
-
-        function resizeFlameCanvas() {
-          const width = canvasContainer.clientWidth;
-          const height = canvasContainer.clientHeight;
-          renderer.setSize(width, height);
-          uniforms.resolution.value.set(width, height);
-        }
-
-        resizeFlameCanvas();
-        window.addEventListener("resize", resizeFlameCanvas);
-
-        function animate() {
-          requestAnimationFrame(animate);
-          uniforms.time.value += 0.003;
-          renderer.render(scene, camera);
-        }
-
-        animate();
-      })();
-    </script>
-
-    </body>
-
-    <footer>
-        <div class="footerTop">
-            <nav class="footerLinks">
-                <a href="contact.html">Contact Us</a>
-                <a href="returns.html">Returns</a>
-                <a href="shipping.html">Shipping</a>
-            </nav>
-
-            <nav class="footerSocials">
-                <a href="https://www.instagram.com/allunderhvn/" target="_blank"><img src="images/iglogo.svg" alt="Instagram"></a>
-                <a href="https://www.facebook.com/profile.php?id=100064778059647" target="_blank"><img src="images/fblogo.svg" alt="Facebook"></a>
-            </nav>
+      <section class="albumGrid">
+        <div class="albumCard">
+          <img
+            src="images/AllUnderHeaven-WhatLiesAheadOfMe-Cover_2000x.jpg"
+            alt="What Lies Ahead of Me Cover"
+            />
+            <p class="albumTitle">What Lies Ahead of Me</p>
+            <a
+                href="https://linktr.ee/allunderheaven"
+                class="streamLink"
+                target="_blank"
+                >CLICK TO STREAM</a
+            >
         </div>
 
-        <div class="footerBottom">
-            <p>© 2025 All Under Heaven</p>
-            <nav class="legalLinks">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="shipping.html">Shipping Policy</a>
-                <a href="returns.html">Returns</a>
-                <a href="contact.html">Contact Info</a>
-                <a href="tos.html">Terms of Service</a>
-            </nav>
+        <div class="albumCard">
+          <img
+            src="images/auh-lt-glareCover.jpg"
+            alt="AUH / Leaving Time / Glare Cover"
+          />
+          <p class="albumTitle">Split</p>
+          <a
+            href="https://linktr.ee/allunderheaven"
+            class="streamLink"
+            target="_blank"
+            >CLICK TO STREAM</a
+          >
         </div>
-    </footer>
 
+        <div class="albumCard">
+          <img src="images/dsa2acCover.jpg" alt="DSA 2 / Alley Cat Cover" />
+          <p class="albumTitle">Don't Suffer Alone / Alley Cat</p>
+          <a
+            href="https://linktr.ee/allunderheaven"
+            class="streamLink"
+            target="_blank"
+            >CLICK TO STREAM</a
+          >
+        </div>
+
+        <div class="albumCard">
+          <img src="images/colliderCover.jpg" alt="Collider Cover" />
+          <p class="albumTitle">Collider</p>
+          <a
+            href="https://linktr.ee/allunderheaven"
+            class="streamLink"
+            target="_blank"
+            >CLICK TO STREAM</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <script src="fog.js"></script>
+
+    <script src="cloud.js"></script>
+  </body>
+
+  <footer>
+    <div class="footerTop">
+      <nav class="footerLinks">
+        <a href="contact.html">Contact Us</a>
+        <a href="returns.html">Returns</a>
+        <a href="shipping.html">Shipping</a>
+      </nav>
+
+      <nav class="footerSocials">
+        <a href="https://www.instagram.com/allunderhvn/" target="_blank"
+          ><img src="images/iglogo.svg" alt="Instagram"
+        /></a>
+        <a
+          href="https://www.facebook.com/profile.php?id=100064778059647"
+          target="_blank"
+          ><img src="images/fblogo.svg" alt="Facebook"
+        /></a>
+      </nav>
+    </div>
+
+    <div class="footerBottom">
+      <p>© 2025 All Under Heaven</p>
+      <nav class="legalLinks">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="shipping.html">Shipping Policy</a>
+        <a href="returns.html">Returns</a>
+        <a href="contact.html">Contact Info</a>
+        <a href="tos.html">Terms of Service</a>
+      </nav>
+    </div>
+  </footer>
 </html>

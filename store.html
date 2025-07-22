@@ -7,32 +7,43 @@
         <title>store - all under heaven</title>
         <link rel="icon" href="images/auhlogo512x512.png" type="image/x-icon">
         <link rel="stylesheet" href="style.css?v=3">
+        <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
     </head>
 
     <body class="bodyBackground">
-
+        <div class="pageWrapper">
         <header>
             <div class="pageTitle">
-            <h1>ALL UNDER HEAVEN</h1>
+            <h1 class="noisyText">ALL UNDER HEAVEN</h1>
             </div>
             <nav role="navigation">
-                <div id="menuToggle">
+        <div id="menuToggle">
+          <input type="checkbox" id="menuCheckbox" />
 
-                    <input type="checkbox" id="menuCheckbox" />
+          <span></span>
+          <span></span>
+          <span></span>
 
-                    <span></span>
-                    <span></span>
-                    <span></span>   
-
-                        <ul id="menu">
-                            <li><a href="index.html">HOME</a></li>
-                            <li><a href="music.html">MUSIC</a></li>
-                            <li><a href="tickets.html">TOUR</a></li>
-                            <li><a href="https://auhnj.square.site/" target="_blank">STORE</a></li>
-                            <li><a href="https://all-under-heaven.kit.com/dc9f53c274" target="_blank">STAY UP TO DATE</a></li>
-                        </ul>          
-                </div>
-            </nav>
+          <div id="menu">
+            <div id="flameCanvas"></div>
+            <ul>
+              <li><a href="index.html">HOME</a></li>
+              <li><a href="music.html">MUSIC</a></li>
+              <li><a href="tickets.html">TOUR</a></li>
+              <li>
+                <a href="https://auhnj.square.site/" target="_blank">STORE</a>
+              </li>
+              <li>
+                <a
+                  href="https://all-under-heaven.kit.com/dc9f53c274"
+                  target="_blank"
+                  >STAY UP TO DATE</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
             
         </header>
 
@@ -44,9 +55,13 @@
         
         <script src="store.js"></script>
 
-    </body>
+        
 
-    <footer>
+        </div>
+
+        <script src="fog.js"></script>
+
+        <footer>
         <div class="footerTop">
             <nav class="footerLinks">
                 <a href="contact.html">Contact Us</a>
@@ -71,5 +86,10 @@
             </nav>
         </div>
     </footer>
+
+    
+    </body>
+
+    
 
 </html>

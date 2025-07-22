@@ -15,7 +15,11 @@ html, body {
 .pageWrapper {
   flex: 1 0 auto;
 }
-  
+
+@font-face {
+  font-family: "EkMukta-light";
+  src: url(images/EkMukta-Light.ttf);
+}
 
 
 @font-face {
@@ -30,7 +34,7 @@ html, body {
 
 @font-face {
   font-family: "EkMukta";
-  src: url(images/EkMukta-ExtraBold.ttf);
+  src: url(images/ekmukta-bold.ttf);
 }
 
 /* ===================================== */
@@ -49,9 +53,30 @@ html, body {
   margin-top: .01rem;
   padding-bottom: 100px;
   text-align: center;
-  color: #1D1D1B;
+  color: #ddbd80;
+  opacity: .95;
+  
   
 }
+
+.noisyText {
+  
+  font-family: 'Toledo2', serif;
+  background-image: 
+    linear-gradient(to bottom, rgba(255, 200, 150, 0.75), rgba(255, 160, 60, 0.65)),  /* soft pink-peach gradient */
+    url('images/yellowPinkGradient.png'); /* new lighter noise */
+  background-size: contain; /* static gradient, moving grain */
+  background-repeat: no-repeat, repeat;
+  background-blend-mode: soft-light, overlay;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-align: center;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+
+
 
 /* ===================================== */
 /* SIDEBAR */
@@ -248,12 +273,15 @@ html, body {
   text-decoration: none;
   color: white;
   border-radius: 12px;
+  
 }
+
 
 #featuredIndexButton:hover {
   border: 2px solid white;
   font-style: italic;
   text-decoration: underline;
+  text-shadow: 0 0 15px #7CA8D9, 0 0 25px #7CA8D9, 0 0 35px #7CA8D9;
 }
 
 #featuredIndexButton a {
@@ -299,10 +327,11 @@ html, body {
 }
 
 #albumName h2 {
-  font: 26px Toledo2;
+  font: 26px EkMukta;
   padding-bottom: 0.5rem;
   text-shadow: 0 0 15px white, 0 0 25px white, 0 0 35px white;
-  font-weight: 500;
+  font-weight: 100;
+  letter-spacing: 1px;
 }
 
 #listenButton {
@@ -322,9 +351,11 @@ html, body {
 }
 
 #listenButton:hover {
-  border: 2px solid white;
+  border: 2px solid #F86788;
   font-style: italic;
   text-decoration: underline;
+  color: #F86788;
+  text-shadow: 0 0 15px white, 0 0 25px white, 0 0 35px white;
 }
 
 #listenButton a {
@@ -334,7 +365,7 @@ html, body {
 }
 
 #listenButton a:hover {
-  font: italic bold 15px Arial Black;
+  font: italic bold 15px Arial Black #F86788;
   text-decoration: underline;
 }
 
@@ -403,14 +434,19 @@ html, body {
   padding-top: 50px;
   padding-bottom: 10px;
   flex-direction: column;
-  
 }
+
 
 .indexVideoHub {
   justify-content: center;
   align-items: center;
   text-align: center; /* Ensures text centering */
   padding-bottom: 25px;
+  
+}
+
+.indexVideoHub h2 {
+  color: #fdef73;
 }
 
 
@@ -481,6 +517,7 @@ img {
     padding-top: 30px;
     padding-bottom: 20px;
     text-align: center;
+    
   }
 
 
@@ -500,60 +537,101 @@ img {
 /* MUSIC PAGE */
 /* ===================================== */
 .featuredRelease {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   margin-bottom: 3rem;
   font: BankGothic-MD;
+  overflow: visible !important;
 }
 
 .featuredRelease img {
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
   object-fit: cover;
   margin-bottom: 1.2rem;
-  animation: mymove3 4s infinite;
+  z-index: 3;
+  position: relative;
+  transition: border 0.2s ease;
 }
 
 .featuredRelease img:hover {
   border: 3px solid white;
 }
 
-@keyframes mymove3 {
-    0%, 100% {
-    box-shadow: 0 0 15px 10px #7CA8D9;
-  }
-  50% {
-    box-shadow: 0 0 30px 20px #7CA8D9;
-  }
-}
-
+/* Container for the stream button and title */
 .featuredButton {
-  background-color: #7CA8D9;
-  padding: .5rem;
-  margin-top: 10px;
-  border-radius: 12px;
-}
-
-.featuredButton:hover {
-  border: 2px solid white;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 1.5rem 2rem; /* More padding */
+  min-height: 120px; /* Ensures consistent height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Better text centering */
+  overflow: visible!important;
 }
 
 .featuredText h2 {
   font: bold 1.25rem BankGothic-MD;
   margin-bottom: .5rem;
   color: white;
+  text-shadow: 0 0 5px #7CA8D9, 0 0 15px #7CA8D9, 0 0 25px #7CA8D9;
 }
 
 .featuredLink {
   text-decoration: none;
   font: italic bold 1rem Arial Black;
   color: white;
+  display: block;
+  padding: 0.5em;
+  border: 2px solid #77613A;
+  background-image: url(images/auh-highListenButton.png);
+  background-size: cover;
+  width: 200px;
+  text-align: center;
+  margin: 1rem auto 0 auto;
+  font: bold 15px Arial Black;
+  text-decoration: none;
+  color: white;
+  border-radius: 12px;
+}
+
+.featuredLink:hover {
+  border: 2px solid white;
+  font-style: italic;
+  text-decoration: underline;
+  text-shadow: 0 0 15px #7CA8D9, 0 0 25px #7CA8D9, 0 0 35px #7CA8D9;
 }
 
 .featuredButton a:hover {
   text-decoration: underline;
+}
+
+.featuredButtonWrapper {
+  position: relative;
+  width: calc(100% + 60px);
+  max-width: 700px; /* Increased from 320px */
+  height: 150px; /* Slightly taller */
+  margin: 0 -30px; /* Center horizontally */
+  overflow: visible!important;
+}
+
+#cloudCanvas {
+  position: absolute;
+  top: -15px;
+  left: -30px;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 1.0;
+  mix-blend-mode: screen;
+  /* Ensure no conflicting transforms */
+  transform: none !important;
+  overflow: visible!important;
 }
 
 .albumGrid {
@@ -717,7 +795,7 @@ img {
     aspect-ratio: 1 / 1;
     overflow: hidden;
     border-radius: 10px;
-    background-color: #f8f8f8;
+    background-color: #e9b4cb;
 }
 
 
@@ -782,7 +860,7 @@ img {
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 2rem;
-  background: #fff;
+  background: #e9b4cb;
 }
 
 .productImageWrap {
@@ -847,6 +925,48 @@ img {
     max-width: 100%;
   }
 }
+
+/* ===================================== */
+/* CONTACT PAGE */
+/* ===================================== */
+
+.contactWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ===================================== */
+/* RETURN POLICY PAGE */
+/* ===================================== */
+
+.returnWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ===================================== */
+/* SHIPPING POLICY PAGE */
+/* ===================================== */
+
+.shippingWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+
+/* ===================================== */
+/* TOS PAGE */
+/* ===================================== */
+
+/* ===================================== */
+/* PRIVACY POLICY PAGE */
+/* ===================================== */
 
 /* ===================================== */
 /* FOOTER */
