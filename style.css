@@ -54,25 +54,20 @@ html, body {
   padding-bottom: 100px;
   text-align: center;
   color: #ddbd80;
-  opacity: .95;
+  opacity: 1.0;
   
   
 }
 
 .noisyText {
-  
-  font-family: 'Toledo2', serif;
   background-image: 
-    linear-gradient(to bottom, rgba(255, 200, 150, 0.75), rgba(255, 160, 60, 0.65)),  /* soft pink-peach gradient */
-    url('images/yellowPinkGradient.png'); /* new lighter noise */
-  background-size: contain; /* static gradient, moving grain */
-  background-repeat: no-repeat, repeat;
-  background-blend-mode: soft-light, overlay;
+    linear-gradient(to bottom, rgba(255, 200, 150, 0.75), rgba(255, 160, 60, 0.65));  /* soft pink-peach gradient */
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: transparent;
-  text-align: center;
-  text-shadow: 0 0 1px rgba(255, 255, 255, 0.15);
+  text-shadow:
+  1px 1px 0 rgba(255, 200, 150, 0.75),  /* top-left highlight */
+ -1px -1px 0 rgba(255, 160, 60, 0.65);
 }
 
 
@@ -111,7 +106,7 @@ html, body {
   height: 4px;
   margin-bottom: 5px;
   position: relative;
-  background: #1D1D1B;
+  background: #ffc48a;
   border-radius: 3px;
   z-index: 2;
   transform-origin: 4px 0px;
@@ -127,7 +122,7 @@ html, body {
 #menuToggle input:checked ~ span {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
-  background: #1D1D1B;
+  background: #ffc48a;
 }
 #menuToggle input:checked ~ span:nth-last-child(3) {
   opacity: 0;
@@ -178,7 +173,7 @@ html, body {
 
 #menu ul li a {
   text-decoration: none;
-  color: #1D1D1B;
+  color: #fab678;
   transition: all 0.3s ease;
   position: relative;
   z-index: 3;
@@ -187,12 +182,13 @@ html, body {
   display: inline-block;
   font-size: 1.1em;
   letter-spacing: 1px;
+  opacity: 1.0!important;
 }
 
 #menu ul li a:hover {
-  color: #fff;
-  text-shadow: 0 0 12px rgba(255,255,255,0.8), 
-               0 0 6px rgba(0,0,0,0.8);
+  color: #fab678;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.75), 
+               0 0 6px rgba(255, 160, 60, 0.65);
 }
 
 #flameCanvas {
@@ -203,6 +199,7 @@ html, body {
   pointer-events: none;
   width: 100%;
   height: 100%;
+  opacity: .80;
 }
 
 #menu ul li.active a {
@@ -447,6 +444,7 @@ html, body {
 
 .indexVideoHub h2 {
   color: #fdef73;
+  font:  bold 45px Arial Black;
 }
 
 

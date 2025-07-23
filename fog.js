@@ -81,7 +81,7 @@
         color = mix(color, darkColor, firstStep - darkerColorStep);
         color = mix(vec4(0.0), color, firstStep);
 
-        if (color.r < 0.50) {
+        if (color.r < 0.75) {
             color.a = 0.0;
         }
 
