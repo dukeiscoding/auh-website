@@ -891,12 +891,12 @@ img {
 
   .tourVenue,
   .tourLocation,
-  .tourLinkBorder {
+  .tourLink {
     padding: 0.5rem 0;
     width: 100%;
   }
 
-  .tourLinkBorder {
+  .tourLink {
     display: inline-block;
     margin-top: 0.5rem;
   }
