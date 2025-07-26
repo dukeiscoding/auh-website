@@ -79,6 +79,12 @@ body {
   margin-right: 3px;
 }
 
+.titleLine,
+.heavenWord {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 @media (max-width: 768px) {
   .letterA {
     margin-right: -10px;
@@ -88,15 +94,7 @@ body {
   .letterV {
     margin-right: 2px;
   }
-}
 
-.titleLine,
-.heavenWord {
-  display: inline-block;
-  white-space: nowrap;
-}
-
-@media (max-width: 768px) {
   .heavenWord {
     display: block;
     text-align: center;
@@ -246,12 +244,31 @@ body {
     top: 80px; /* or however much lower you'd like */
     left: 25px;
   }
-}
 
-@media (max-width: 768px) {
+  #flameCanvas {
+    opacity: .87;
+  }
+
   #menu {
     padding-top: 120px; /* move text higher on screen */
     padding-right: 50px; /* allow more room for text */
+  }
+
+  #menu ul li a {
+    line-height: 1.2;         /* Tighter vertical spacing */
+    display: inline-block;    /* Prevent full-width stacking */
+    padding: 8px 125px 0px 15px;        /* Optional tweak */
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  #menuToggle {
+    top: 130px; /* or however much lower you'd like */
+    left: 40px;
+  }
+
+  #flameCanvas {
+    opacity: .87;
   }
 }
 
@@ -270,12 +287,6 @@ body {
   justify-content: center;
 }
 
-@media (max-width: 480px) {
-  #indexFeatured {
-    padding-top: 0;
-  }
-}
-
 #featuredImage {
   display: block;
   max-width: 100%;
@@ -285,29 +296,24 @@ body {
 }
 
 #indexFeatured img:hover {
-  border: 3px solid white;
-}
-
-@keyframes mymove4 {
-  0%,
-  100% {
-    box-shadow: 0 0 20px 10px #7ca8d9;
-  }
-  50% {
-    box-shadow: 0 0 35px 25px #7ca8d9;
-  }
+  border: 1px solid #ffc48a;
+  animation: sunShimmer 4s ease-in-out infinite;
+  transition: filter 0.2s ease, box-shadow 0.2s ease;
+  z-index: 1;
 }
 
 #featuredInfo {
   text-align: center;
   padding-top: 1rem;
   color: #eaf2f5;
+  z-index: 2;
 }
 
 #featuredInfo h2 {
   font: 26px BankGothic-MD;
   padding-bottom: 0.5rem;
-  text-shadow: 0 0 20px #7ca8d9, 0 0 30px #7ca8d9, 0 0 40px #7ca8d9;
+  text-shadow: 0 0 15px #7ca8d9, 0 0 25px #7ca8d9, 0 0 35px #7ca8d9;
+  
 }
 
 #featuredIndexButton {
@@ -329,7 +335,8 @@ body {
   border: 2px solid white;
   font-style: italic;
   text-decoration: underline;
-  text-shadow: 0 0 15px #7ca8d9, 0 0 25px #7ca8d9, 0 0 35px #7ca8d9;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.664), 0 0 25px #7ca8d9, 0 0 35px rgba(255, 255, 255, 0.664);
+  color: #7ca8d9;
 }
 
 #featuredIndexButton a {
@@ -349,18 +356,11 @@ body {
   width: 30% !important;
 }
 
-@keyframes mymove {
-  0%,
-  100% {
-    box-shadow: 0 0 20px 10px white;
-  }
-  50% {
-    box-shadow: 0 0 35px 25px white;
-  }
-}
-
 #indexAlbum img:hover {
-  border: 3px solid black;
+  border: 1px solid #ffc48a;
+  animation: sunShimmer 4s ease-in-out infinite;
+  transition: filter 0.2s ease, box-shadow 0.2s ease;
+  z-index: 1;
 }
 
 #indexAlbum {
@@ -373,11 +373,11 @@ body {
   text-align: center;
   padding-top: 1rem;
   color: #f86788;
+  z-index: 2;
 }
 
 #albumName h2 {
   font: 26px EkMukta;
-  padding-bottom: 0.5rem;
   text-shadow: 0 0 15px white, 0 0 25px white, 0 0 35px white;
   font-weight: 200;
   letter-spacing: 1px;
@@ -457,23 +457,12 @@ body {
 
 #poster img {
   width: 750px;
-  animation: mymove2 5s infinite;
   box-shadow: 0 0 20px 15px #37e4af;
 }
 
 #poster img:hover {
   border: 3px solid #aff988;
   width: 750px;
-}
-
-@keyframes mymove2 {
-  0%,
-  100% {
-    box-shadow: 0 0 15px 10px #37e4af;
-  }
-  50% {
-    box-shadow: 0 0 30px 20px #37e4af;
-  }
 }
 
 .indexVideo {
@@ -483,6 +472,11 @@ body {
   padding-top: 50px;
   padding-bottom: 10px;
   flex-direction: column;
+}
+
+iframe:hover {
+  animation: sunShimmer 4s ease-in-out infinite;
+  transition: filter 0.2s ease, box-shadow 0.2s ease;
 }
 
 .indexVideoHub {
@@ -521,6 +515,12 @@ img {
 }
 
 /* MOBILE RESPONSIVENESS */
+
+@media (max-width: 480px) {
+  #indexFeatured {
+    padding-top: 0;
+  }
+}
 
 @media (max-width: 768px) {
   .pageTitle h1 {
@@ -581,6 +581,16 @@ img {
   }
 }
 
+@media (min-width: 769px) and (max-width: 1024px) {
+    #indexAlbum img {
+    width: 80% !important;
+  }
+
+  #indexFeatured img {
+    width: 80% !important;
+  }
+}
+
 /* ===================================== */
 /* MUSIC PAGE */
 /* ===================================== */
@@ -613,7 +623,9 @@ img {
 }
 
 .featuredRelease img:hover {
-  border: 3px solid white;
+  border: 1px solid #ffc48a;
+  animation: sunShimmer 4s ease-in-out infinite;
+  transition: filter 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Container for the stream button and title */
@@ -667,7 +679,7 @@ img {
 
 .featuredButtonWrapper {
   position: relative;
-  width: calc(100% + 60px);
+  width: 100%;
   max-width: 700px; /* Increased from 320px */
   height: 150px; /* Slightly taller */
   margin: 0 -30px; /* Center horizontally */
@@ -686,8 +698,8 @@ img {
 #cloudCanvas {
   position: absolute;
   top: -15px;
-  left: -30px;
-  width: 100% !important;
+  left: -380px;
+  width: 200% !important;
   height: 100% !important;
   z-index: 0;
   pointer-events: none;
@@ -700,11 +712,8 @@ img {
 
 @media (max-width: 768px) {
   #cloudCanvas {
-    width: 100% !important;
-    height: 100% !important;
-    top: 0 !important;
-    left: 0 !important;
-    overflow: visible !important;
+  left: -230px;
+  height: 120% !important;
   }
 }
 
@@ -725,11 +734,36 @@ img {
   width: 100%;
   height: 250px;
   object-fit: cover;
-  border: 1px solid black;
+  border: 1px solid white;
 }
 
 .albumCard img:hover {
-  border: 1px solid white;
+  border: 1px solid #ffc48a;
+  animation: sunShimmer 4s ease-in-out infinite;
+  transition: filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+@keyframes sunShimmer {
+  0% {
+    box-shadow: 0 0 15px 5px #fab678;
+    filter: brightness(1.0);
+  }
+  25% {
+    box-shadow: 0 0 25px 10px #fab678;
+    filter: brightness(1.0);
+  }
+  50% {
+    box-shadow: 0 0 30px 15px #fab678;
+    filter: brightness(1.0);
+  }
+  75% {
+    box-shadow: 0 0 25px 10px #fab678;
+    filter: brightness(1.0);
+  }
+  100% {
+    box-shadow: 0 0 15px 5px #fab678;
+    filter: brightness(1.0);
+  }
 }
 
 .albumTitle {
@@ -751,6 +785,8 @@ img {
 .streamLink:hover {
   text-decoration: underline;
 }
+
+
 
 /* ===================================== */
 /* TOUR PAGE */
@@ -775,12 +811,14 @@ img {
 }
 
 .tourBorder:hover {
-  border: 2px solid white;
+  border: 2px solid #fab678;
   background-image: url(images/footerBG.png);
   background-size: cover;
   color: white;
   text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
     1px 1px 0 black;
+  animation: sunShimmer 4s ease-in-out infinite;
+  transition: filter 0.2s ease, box-shadow 0.2s ease;
 }
 
 .tourDates {
@@ -800,7 +838,7 @@ img {
   flex: 2;
 }
 
-.tourLinkBorder {
+.tourLink {
   border: 2px solid black;
   padding: 0.4rem;
   background-color: #fab678;
@@ -809,7 +847,7 @@ img {
     1px 1px 0 black;
 }
 
-.tourLinkBorder:hover {
+.tourLink:hover {
   border: 2px solid white;
 }
 
@@ -1264,21 +1302,20 @@ footer {
   background-position: top center;
   background-attachment: scroll;
 
-  padding: 6rem 2rem 4rem 2rem; /* ⬅️ increased height from padding */
-  font: 12px Arial Black, sans-serif;
+  padding: 6rem 2rem 2rem 2rem; /* ⬅️ increased height from padding */
+  font: 1.05rem Arial Black, sans-serif;
   color: white;
   text-align: center;
   position: relative;
   z-index: 1;
   flex-shrink: 0;
-}
-
-.footerTop {
-  margin-bottom: 3rem;
+  text-shadow: -1px -1px 0 #fab678, 1px -1px 0 #fab678, -1px 1px 0 #fab678,
+    1px 1px 0 #fab678;
 }
 .footerBottom {
-  margin-bottom: 2rem;
+  margin-bottom: .5rem;
   gap: 1rem;
+  padding-top: 3rem;
 }
 
 .footerLinks {
@@ -1286,7 +1323,7 @@ footer {
 }
 
 .footerLinks a {
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin: 0 0.75rem;
   font-style: italic;
   margin-top: 2rem;
@@ -1297,19 +1334,15 @@ footer {
 }
 
 .footerSocials img {
-  width: 25px;
-  height: 25px;
+  width: 40px;
+  height: 40px;
   filter: brightness(100);
 }
 
 .footerBottom a {
-  font-size: 0.7rem;
+  font-size: .9rem;
   font-weight: bold;
   text-decoration: none;
-}
-
-.footerBottom p {
-  margin-bottom: 1.2rem;
 }
 
 a:hover {
@@ -1320,7 +1353,37 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 15rem;
   margin-top: 1rem;
-  padding: 0 1rem;
+  
 }
+
+@media (max-width: 768px) {
+  .legalLinks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    padding: 0 1rem;
+    
+  }
+
+  .footerBottom a {
+    font-size: .7rem;
+
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .legalLinks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    padding: 0 1rem;
+    
+  }
+}
+
