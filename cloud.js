@@ -124,7 +124,7 @@ const material = new THREE.ShaderMaterial({
 
     void main() {
       vec2 st = (gl_FragCoord.xy - 0.5 * iResolution.xy) / iResolution.y;
-      vec2 uv = st * 0.86;
+      vec2 uv = st * .86;
 
       vec3 ro = vec3(15.0 + 0.25 * cos(iTime * 0.33), 4.0 + 0.05 * sin(iTime * 0.15), -7.0);
       vec3 ta = vec3(0.0);
