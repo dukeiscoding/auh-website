@@ -229,7 +229,7 @@ body {
 
 #menu ul li a:hover {
   color: #fab678;
-  text-shadow: 0 0 12px rgb(255, 196, 118), 0 0 6px rgba(255, 145, 0, 0.377);
+  text-shadow: 0 0 5px rgb(255, 196, 118), 0 0 2px rgba(255, 145, 0, 0.377);
 }
 
 #flameCanvas {
@@ -338,6 +338,7 @@ body {
     opacity: .87;
   }
 }
+
 
 /* ===================================== */
 /* INDEX PAGE */
