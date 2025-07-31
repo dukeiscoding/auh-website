@@ -401,7 +401,7 @@ body {
 
 #featuredIndexButton:hover {
   border: 2px solid white;
-  font-style: italic;
+  
   text-decoration: underline;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.664), 0 0 25px #7ca8d9, 0 0 35px rgba(255, 255, 255, 0.664);
   color: #7ca8d9;
@@ -469,7 +469,7 @@ body {
 
 #listenButton:hover {
   border: 2px solid #f86788;
-  font-style: italic;
+  
   text-decoration: underline;
   color: #f86788;
   text-shadow: 0 0 15px white, 0 0 25px white, 0 0 35px white;
@@ -732,7 +732,6 @@ img {
 
 .featuredLink:hover {
   border: 2px solid white;
-  font-style: italic;
   text-decoration: underline;
   text-shadow: 0 0 15px #7ca8d9, 0 0 25px #7ca8d9, 0 0 35px #7ca8d9;
 }
@@ -771,6 +770,7 @@ img {
   mix-blend-mode: screen;
   transform: none !important;
   overflow: visible !important;
+  transform: translate3d(0,0,0);
 }
 
 @media (max-width: 768px) {
@@ -854,14 +854,25 @@ img {
 
 .streamLink {
   text-decoration: none;
-  font: italic bold 13px Arial Black;
+  font: bold 10px Arial Black;
   color: white;
   text-shadow: -1px -1px 0 #fab678, 1px -1px 0 #fab678, -1px 1px 0 #fab678,
     1px 1px 0 #fab678;
+  border: 2px solid white;
+  
+  border-radius: 12px;
+  padding: 3px 10px;
+  background-image: url(images/yellowPinkGradient.png), linear-gradient(to bottom, rgba(255, 159, 69, 0.747), rgba(252, 167, 57, 0.301));
+  background-blend-mode: darken;
+  background-size: cover;
+    
 }
 
 .streamLink:hover {
-  text-decoration: underline;
+  text-decoration: underline;  
+  transition: filter 0.2s ease, box-shadow 0.2s ease;
+  border: 2px solid rgba(250, 244, 244, 0.945);
+  text-shadow: 0 0 10px white, 0 0 18px #fab678, 0 0 25px white;
 }
 
 
