@@ -29,12 +29,17 @@ body {
 
 @font-face {
   font-family: "Toledo2";
-  src: url(images/Toledo-Medium\ Regular.ttf);
+  src: url(images/Toledo-Regular\ Regular.otf);
 }
 
 @font-face {
   font-family: "EkMukta";
   src: url(images/EkMukta-Bold.ttf);
+}
+
+@font-face {
+  font-family: "Forum";
+  src: url(images/Forum-Regular.ttf);
 }
 
 /* ===================================== */
@@ -47,14 +52,16 @@ body {
   background-attachment: fixed!important;
 }
 
-
-.pageTitle h1 {
-  font-family: Toledo2;
-  font-size: clamp(2rem, 10vw, 100px);
-  text-align: center;
-  color: #ddbd80;
-  opacity: 1;
-  padding-bottom: 80px;
+.titleImage {
+  background-image: url(images/websiteTitle.png);
+  width: 1000px;
+  aspect-ratio: 10 / 1.5;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 70px;
 }
 
 .noisyText {
@@ -70,51 +77,34 @@ body {
   -1px -1px 0 rgba(255, 160, 60, 0.65);
 }
 
-.letterA {
-  margin-right: -20px;
-  margin-left: 3px;
-}
-
-.letterV {
-  margin-right: 3px;
-}
-
-.titleLine,
-.heavenWord {
-  display: inline-block;
-  white-space: nowrap;
-}
-
 @media (max-width: 768px) {
-  .letterA {
-    margin-right: -10px;
-    margin-left: 2px;
-  }
-
-  .letterV {
-    margin-right: 2px;
-  }
-
-  .heavenWord {
-    display: block;
-    text-align: center;
-  }
+  .titleImage {
+  background-image: url(images/websiteTitle3.png);
+  background-position: top center;
+  background-size: cover;
+  aspect-ratio: 4 / 3 ;
+  margin: 0 auto;
+    padding-top: 0;
+    margin-top: -1rem;
+  
+}
 }
 
 @media (max-width: 480px) {
-  h1.noisyText {
-    font-size: 4rem !important;
-  }
+  .titleImage {
+  width: 75%;
+}
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  .pageTitle h1 {
-  font-family: Toledo2;
-  font-size: clamp(2rem, 20vw, 120px);;
-  text-align: center;
-  color: #ddbd80;
-  opacity: 1;
-  padding-bottom: 80px;
+  .titleImage {
+  width: 90%;
+}
+}
+
+@media (max-width: 812px) and (orientation: landscape) {
+  .titleImage {
+    width: 65%;
 }
 }
 
@@ -125,7 +115,7 @@ body {
 #menuToggle {
   display: block;
   position: fixed;
-  top: 50px;
+  top: 60px;
   left: 50px;
   z-index: 2;
   -webkit-user-select: none;
@@ -330,8 +320,8 @@ body {
 
 @media (min-width: 769px) and (max-width: 1024px) {
   #menuToggle {
-    top: 130px;
-    left: 40px;
+    top: 105px;
+    left: 45px;
   }
 
   #flameCanvas {
@@ -455,7 +445,7 @@ body {
   display: block;
   padding: 0.5em;
   border: 2px solid #63645e;
-  background-image: url(images/albumbgINVERT.png);
+  background-image: url(images/albumbgINVERT1.png);
   background-size: cover;
   width: 200px;
   text-align: center;
@@ -472,7 +462,7 @@ body {
   
   text-decoration: underline;
   color: #f86788;
-  text-shadow: 0 0 15px white, 0 0 25px white, 0 0 35px white;
+  text-shadow: 0 0 15px #63645e, 0 0 25px #63645e, 0 0 35px #63645e;
 }
 
 #listenButton a {
@@ -537,7 +527,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 50px;
+  padding-top: 80px;
   padding-bottom: 10px;
   flex-direction: column;
 }
@@ -556,7 +546,7 @@ iframe:hover {
 
 .indexVideoHub h2 {
   color: #fdef73;
-  font: bold 45px Arial Black;
+  font: bold 45px Toledo2;
 }
 
 /*  POLISH / ACCESSIBILITY IMPROVEMENTS */
@@ -788,10 +778,10 @@ img {
   }
 }
 
-@media (max-width: 850px) and (orientation: landscape) {
+@media (max-width: 1080px) and (orientation: landscape) {
   #cloudCanvas {
-  width: 100vw !important;
-  left: -95px!important;
+  width: 100vw !important;  /* balance offset for overrun instead of hardcoded px */
+  left: -200px;
   }
 }
 
@@ -862,8 +852,7 @@ img {
   
   border-radius: 12px;
   padding: 3px 10px;
-  background-image: url(images/yellowPinkGradient.png), linear-gradient(to bottom, rgba(255, 159, 69, 0.747), rgba(252, 167, 57, 0.301));
-  background-blend-mode: darken;
+  background-image: linear-gradient(to top, rgb(255, 209, 149), rgb(255, 175, 100));
   background-size: cover;
     
 }
@@ -1251,6 +1240,24 @@ img {
   color: #1a1a1a;
 }
 
+.returnWrap h2,
+.returnWrap h3 {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+#returnGuide ul {
+  list-style-type: disc;
+  text-align: left;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+#returnGuide li {
+  margin-bottom: 0.75rem;
+}
+
+
 .returnWrap a {
   color: white;
   text-decoration: none;
@@ -1277,7 +1284,7 @@ img {
   max-width: 700px;
   margin: 0.5rem auto 5rem auto;
   padding: 2rem;
-  line-height: 1.7;
+  line-height: 1.8;
   font-size: 1rem;
 
   background-color: rgba(255, 255, 255, 0.15); /* more transparent */
@@ -1288,6 +1295,24 @@ img {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   color: #1a1a1a;
 }
+
+.shippingWrap h2,
+.shippingWrap h3 {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+#shippingGuide ul {
+  list-style-type: disc;
+  text-align: left;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+#shippingGuide li {
+  margin-bottom: 0.75rem;
+}
+
 
 .shippingWrap a {
   color: white;
@@ -1454,7 +1479,6 @@ footer {
 .footerSocials img {
   width: 40px;
   height: 40px;
-  filter: brightness(100);
 }
 
 .footerBottom a {
@@ -1498,10 +1522,22 @@ a:hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 2rem;
     margin-top: 1rem;
     padding: 0 1rem;
     
+  }
+}
+
+@media (min-width: 1400px) and (max-width: 1460px) {
+  .legalLinks {
+    gap: 5rem;
+  }
+}
+
+@media (min-width: 1060px) and (max-width: 1100px) {
+  .legalLinks {
+    gap: 2rem;
   }
 }
 
