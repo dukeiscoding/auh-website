@@ -96,6 +96,19 @@ body {
 }
 }
 
+@media (min-width: 481px) and (max-width: 767px) {
+  .titleImage {
+    width: 85%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .titleImage {
+    width: 80%;
+  }
+}
+
 @media (min-width: 769px) and (max-width: 1024px) {
   .titleImage {
   width: 90%;
@@ -320,7 +333,7 @@ body {
 
 @media (min-width: 769px) and (max-width: 1024px) {
   #menuToggle {
-    top: 105px;
+    top: 115px;
     left: 45px;
   }
 
@@ -572,24 +585,30 @@ img {
 
 /* MOBILE RESPONSIVENESS */
 
-@media (max-width: 480px) {
+@media (max-width: 767px) {
   #indexFeatured {
     padding-top: 0;
+  }
+
+  #featuredInfo h2,
+  #albumName h2 {
+    font-size: 20px!important;
   }
 }
 
 @media (max-width: 768px) {
-  .pageTitle h1 {
-    font-size: 48px;
-    padding-bottom: 50px;
-  }
-
+  
   #indexAlbum img {
-    width: 85% !important;
+    width: 55% !important;
   }
 
   #indexFeatured img {
-    width: 85% !important;
+    width: 55% !important;
+  }
+
+  #featuredInfo h2,
+  #albumName h2 {
+    font-size: 28px;
   }
 
   #albumName {
@@ -618,7 +637,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 30px;
+    padding-top: 60px;
     padding-bottom: 20px;
     text-align: center;
   }
@@ -638,12 +657,13 @@ img {
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-    #indexAlbum img {
-    width: 80% !important;
+    #indexAlbum img,
+    #indexFeatured img {
+    width: 50% !important;
   }
-
-  #indexFeatured img {
-    width: 80% !important;
+  #featuredInfo h2,
+  #albumName h2 {
+    font-size: 24px;
   }
 }
 
@@ -1302,6 +1322,8 @@ img {
   font-weight: bold;
 }
 
+
+
 #shippingGuide ul {
   list-style-type: disc;
   text-align: left;
@@ -1477,8 +1499,13 @@ footer {
 }
 
 .footerSocials img {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
+}
+
+.footerSocials a:hover img {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
 }
 
 .footerBottom a {
