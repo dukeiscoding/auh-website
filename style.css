@@ -953,6 +953,8 @@ img {
   font: bold 15px Arial Black;
   color: white;
   text-decoration: none;
+  width: 125px;
+  text-align: center;
 }
 
 .tourAnnouncements {
