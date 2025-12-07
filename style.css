@@ -50,7 +50,7 @@ body {
   background-image: url(images/skyBG.png);
   background-size: cover;
   background-attachment: fixed!important;
-  image-rendering: pixelated;
+  
 }
 
 .titleImage {
